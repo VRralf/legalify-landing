@@ -1,42 +1,52 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import Colegioform from "../components/Colegioform";
 import { useModal } from "./ModalContext";
+import styles from "../styles/components/ColegioAbo.module.css";
 
 function ColegioAbo() {
   const { isModalOpen, openModal, closeModal } = useModal();
 
   return (
-    <div className="containerCol">
-      <div className="rowCol">
-        <div className="columnCol">
-          <img
-            id="colegioAbo"
-            src="colegio1.png"
-            alt="Colegio 1"
-            width={700}
-            height={700}
-            onClick={openModal}
-          />
-          {isModalOpen && (
-            <>
-              <div className="fixed inset-0 bg-blur" onClick={closeModal} />
-              <div className="modal-backdrop" onClick={closeModal} />
-              <div className="modal" onClick={closeModal}>
-                <div
-                  className="modal-content"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <span className="close" onClick={closeModal}>
-                    ×
-                  </span>
-                  <Colegioform />
-                </div>
+    <>
+      <div className={styles.container}>
+        <div className={styles.row}>
+          <div className={styles.column}>
+            <div className={styles.imageContainer} onClick={openModal}>
+              <img
+                id="colegioAbo"
+                src="colegio1.png"
+                alt="Promoción para matriculados del Colegio Público de Abogados de la Capital Federal"
+                width={700}
+                height={700}
+                className={styles.image}
+              />
+              <div className={styles.clickIndicator}>
+                Ver detalles
               </div>
-            </>
-          )}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      
+      {isModalOpen && createPortal(
+        <>
+          <div className={styles.modalBackdrop} onClick={closeModal} />
+          <div className={styles.modal} onClick={closeModal}>
+            <div
+              className={styles.modalContent}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className={styles.closeButton} onClick={closeModal} aria-label="Cerrar modal">
+                ×
+              </button>
+              <Colegioform onClose={closeModal} />
+            </div>
+          </div>
+        </>,
+        document.body
+      )}
+    </>
   );
 }
 

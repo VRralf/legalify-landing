@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { Logger } from "../utils/Logger";
+import styles from "../styles/components/Colegioform.module.css";
 
-function Colegioform() {
+interface ColegioformProps {
+  onClose?: () => void;
+}
+
+function Colegioform({ onClose }: ColegioformProps) {
   const [emailSent, setEmailSent] = useState(false);
   const formRef = React.useRef<HTMLFormElement>(null);
 
@@ -35,73 +40,97 @@ function Colegioform() {
   };
 
   return (
-    <>
-      <h2 className="text-2xl mt-3 mb-3 text-legalify-primary font-semibold text-center">
+    <div className={styles.container}>
+      <h2 className={styles.title}>
         Completa estos datos para obtener la promoción
       </h2>
 
-      <div className="section flex flex-col items-center border-b border-legalify-primary py-5 justify-center">
+      <div className={styles.section}>
         <form
           onSubmit={handleSubmit}
           ref={formRef}
-          className="w-full px-5 grid grid-cols-3 gap-2"
+          className={styles.form}
         >
-          <div>
+          <div className={styles.inputGroup}>
             <input
               type="text"
               name="name"
-              className="w-full border border-gray-300 rounded p-2 mt-1"
+              className={styles.input}
               placeholder="Nombre"
+              required
+              aria-label="Nombre"
             />
             <input
               type="text"
               name="apellido"
-              className="w-full border border-gray-300 rounded p-2 mt-1"
+              className={styles.input}
               placeholder="Apellido"
+              required
+              aria-label="Apellido"
             />
           </div>
-          <div>
+          <div className={styles.inputGroup}>
             <input
-              type="text"
+              type="tel"
               name="telefono"
-              className="w-full border border-gray-300 rounded p-2 mt-1"
-              placeholder="telefono"
+              className={styles.input}
+              placeholder="Teléfono"
+              required
+              aria-label="Teléfono"
             />
             <input
-              type="mail"
+              type="email"
               name="mail"
-              className="w-full border border-gray-300 rounded p-2 mt-1"
-              placeholder="email"
+              className={styles.input}
+              placeholder="Email"
+              required
+              aria-label="Email"
             />
           </div>
-          <div>
+          <div className={styles.inputGroup}>
             <input
               type="text"
               name="tomo"
-              className="w-full border border-gray-300 rounded p-2 mt-1"
+              className={styles.input}
               placeholder="Tomo"
+              required
+              aria-label="Tomo"
             />
             <input
               type="text"
               name="folio"
-              className="w-full border border-gray-300 rounded p-2 mt-1"
+              className={styles.input}
               placeholder="Folio"
+              required
+              aria-label="Folio"
             />
           </div>
           <button
             type="submit"
-            className="block w-full bg-blue-500 text-white rounded p-2 mt-3 transform transition-transform duration-200 hover:bg-blue-700 hover:scale-105 col-span-3"
+            className={styles.submitButton}
+            disabled={emailSent}
+            aria-label="Enviar formulario"
           >
-            Enviar
+            <span>{emailSent ? "Enviado" : "Enviar"}</span>
           </button>
           {emailSent && (
-            <div className="mt-3 p-2 bg-green-500 text-white rounded">
-              ¡Mensaje enviado con éxito!
+            <div className={styles.successMessage} role="alert">
+              ¡Mensaje enviado con éxito! Serás redirigido en unos segundos...
             </div>
+          )}
+          {onClose && (
+            <button
+              type="button"
+              className={styles.closeButton}
+              onClick={onClose}
+              aria-label="Cerrar modal"
+            >
+              <span>Cerrar</span>
+            </button>
           )}
         </form>
       </div>
-    </>
+    </div>
   );
 }
 

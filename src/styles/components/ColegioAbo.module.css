@@ -1,0 +1,378 @@
+/* =============================================================================
+   COLEGIO ABOGADOS - DISEÑO MODERNO 2025 - TRANSPARENTE
+   ============================================================================= */
+
+/* Container Principal */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 
+    0 32px 64px -12px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Decorative elements */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+  pointer-events: none;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-30%, 30%);
+  pointer-events: none;
+}
+
+/* Row Container */
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Column Container */
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Image Container */
+.imageContainer {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.imageContainer:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 32px 64px rgba(0, 0, 0, 0.2),
+    0 16px 32px rgba(0, 0, 0, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.imageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.imageContainer:hover::before {
+  opacity: 1;
+}
+
+/* Image Styles */
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 0;
+}
+
+.imageContainer:hover .image {
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Click Indicator */
+.clickIndicator {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(59, 130, 246, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.imageContainer:hover .clickIndicator {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modal Styles - Glassmorphism */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999999;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000000;
+  padding: 1rem;
+}
+
+.modalContent {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 32px 64px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: none;
+  overflow: visible;
+  transform: scale(0.9) translateY(20px);
+  opacity: 0;
+  animation: modalSlideIn 0.3s ease forwards;
+  margin: auto;
+}
+
+.closeButton {
+  display: none;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    padding: 3rem 1.25rem;
+    border-radius: 1.5rem;
+  }
+  
+  .column {
+    gap: 1.5rem;
+  }
+  
+  .closeButton {
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.375rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 2.5rem 1rem;
+    border-radius: 1.25rem;
+    margin: 0 0.5rem;
+  }
+  
+  .column {
+    gap: 1.25rem;
+  }
+  
+  .closeButton {
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+    border-width: 1.5px;
+  }
+  
+  .closeButton:hover {
+    transform: scale(1.1) rotate(90deg);
+  }
+  
+  .modal {
+    padding: 1rem !important;
+    align-items: flex-start !important;
+    padding-top: 2rem !important;
+    overflow-y: auto !important;
+  }
+  
+  .modalContent {
+    width: calc(100vw - 2rem) !important;
+    max-width: none !important;
+    margin-top: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    min-height: auto !important;
+  }
+  
+  .imageContainer {
+    border-radius: 1rem;
+  }
+  
+  .modalContent {
+    margin: 0.5rem;
+    border-radius: 1rem;
+    max-height: 95vh;
+  }
+  
+  .clickIndicator {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2rem 0.75rem;
+  }
+  
+  .column {
+    gap: 1rem;
+  }
+  
+  .modal {
+    padding: 0.75rem !important;
+    padding-top: 1.5rem !important;
+  }
+  
+  .modalContent {
+    width: calc(100vw - 1.5rem) !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  
+  .modalContent {
+    margin: 0.25rem;
+  }
+}
+
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================================================= */
+
+.container {
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
+.imageContainer:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imageContainer,
+  .modalContent,
+  .closeButton {
+    transition: none;
+    animation: none;
+  }
+  
+  .imageContainer:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .container {
+    background: rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .imageContainer {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .clickIndicator {
+    background: rgba(59, 130, 246, 1);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
