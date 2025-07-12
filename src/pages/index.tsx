@@ -9,6 +9,7 @@ import { Footer } from "../components/Footer";
 import { SEO } from "../components/SEO";
 import { useTranslation } from "next-export-i18n";
 import Policies from "../components/Policies";
+import ChatBot from "../components/ChatBot";
 
 // Temporary static imports for debugging
 import ReadyToEvolveSection from "../components/ReadyToEvolveSection";
@@ -151,22 +152,8 @@ export default function Home() {
           <Footer />
           <Policies />
           
-          {/* Floating WhatsApp Button - Modern Design */}
-          <div className="fixed bottom-6 right-6 z-50">
-            <a
-              href="https://api.whatsapp.com/send?phone=5491155801155&text="
-              rel="noreferrer"
-              target="_blank"
-              className="group flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-strong hover:shadow-xl transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-green-300"
-              aria-label="Contactar por WhatsApp"
-            >
-              <img 
-                src="./whatsapp-logo.svg" 
-                alt="" 
-                className="w-8 h-8 filter brightness-0 invert group-hover:scale-110 transition-transform duration-200"
-              />
-            </a>
-          </div>
+          {/* Floating WhatsApp ChatBot */}
+          <ChatBot />
         </div>
       </div>
     </>

@@ -1,0 +1,304 @@
+/* =============================================================================
+   CHATBOT WHATSAPP - DISEÑO MODERNO 2025
+   ============================================================================= */
+
+/* Container Principal */
+.chatContainer {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+/* Botón Flotante Principal */
+.buttonPopup {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 8px 24px rgba(37, 211, 102, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: pulse 2s infinite;
+}
+
+.buttonPopup::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.buttonPopup:hover::before {
+  opacity: 1;
+}
+
+.buttonPopup:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 12px 32px rgba(37, 211, 102, 0.4),
+    0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen del Botón */
+.imgButton {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Modal Popup */
+.popUp {
+  position: absolute;
+  bottom: 4.5rem;
+  right: 0;
+  width: 320px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(37, 211, 102, 0.2);
+  animation: slideUp 0.3s ease-out;
+  transform-origin: bottom right;
+}
+
+/* Botón de Cerrar */
+.closeButton {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: scale(1.05);
+}
+
+/* Texto del Popup */
+.textPopup {
+  color: #374151;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 0 1.5rem 0;
+  padding-right: 2rem;
+}
+
+/* Contenedor del Botón de WhatsApp */
+.whatsappCenter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Botón de WhatsApp */
+.whatsappButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+  text-decoration: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 12px rgba(37, 211, 102, 0.3),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.whatsappButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.whatsappButton:hover::before {
+  left: 100%;
+}
+
+.whatsappButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 20px rgba(37, 211, 102, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+@keyframes pulse {
+  0% {
+    box-shadow: 
+      0 8px 24px rgba(37, 211, 102, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 
+      0 8px 24px rgba(37, 211, 102, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 
+      0 8px 24px rgba(37, 211, 102, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Mobile */
+@media (max-width: 767px) {
+  .chatContainer {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .buttonPopup {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .imgButton {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  .popUp {
+    width: 280px;
+    padding: 1.25rem;
+    bottom: 4rem;
+  }
+  
+  .textPopup {
+    font-size: 0.875rem;
+  }
+  
+  .whatsappButton {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Mobile XS */
+@media (max-width: 480px) {
+  .chatContainer {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .popUp {
+    width: 260px;
+    right: -40px;
+    padding: 1rem;
+  }
+  
+  .textPopup {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .buttonPopup {
+    animation: none;
+  }
+  
+  .popUp {
+    animation: none;
+  }
+  
+  .buttonPopup,
+  .closeButton,
+  .whatsappButton {
+    transition: none;
+  }
+  
+  .buttonPopup:hover,
+  .whatsappButton:hover {
+    transform: none;
+  }
+}
+
+/* High contrast */
+@media (prefers-contrast: high) {
+  .popUp {
+    background: #ffffff;
+    border: 2px solid #25d366;
+  }
+  
+  .textPopup {
+    color: #000000;
+  }
+  
+  .closeButton {
+    background: #ffffff;
+    border: 2px solid #dc2626;
+  }
+}

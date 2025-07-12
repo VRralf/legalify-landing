@@ -3,7 +3,6 @@ import InstagramIcon from "../../public/instagramIcon.svg";
 import LinkedinIcon from "../../public/linkedinIcon.svg";
 import FacebookIcon from "../../public/facebookIcon.svg";
 import MediumIcon from "../../public/mediumIcon.svg";
-import ChatBot from "./ChatBot";
 import styles from '../styles/components/Footer.module.css';
 
 export const Footer: React.FC = () => {
@@ -85,8 +84,6 @@ export const Footer: React.FC = () => {
           </p>
         </section>
       </div>
-      
-      <ChatBot />
     </footer>
   );
 };
