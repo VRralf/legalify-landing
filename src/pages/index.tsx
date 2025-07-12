@@ -93,6 +93,22 @@ export default function Home() {
 
             <div className="w-24 h-px bg-white/30 my-4" />
             
+            <Link href="/#evolve">
+              <a className="menuItem" onClick={() => closeNav()}>
+                {t("NavBarLawyers")}
+              </a>
+            </Link>
+
+            <div className="w-24 h-px bg-white/30 my-4" />
+            
+            <Link href="/#enterprise-services">
+              <a className="menuItem" onClick={() => closeNav()}>
+                {t("NavBarEnterprises")}
+              </a>
+            </Link>
+
+            <div className="w-24 h-px bg-white/30 my-4" />
+            
             <Link href="/#aliados">
               <a className="menuItem" onClick={() => closeNav()}>
                 {t("NavBarAliance")}

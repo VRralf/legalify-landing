@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "./Button";
 import Language from "./Language";
 import MenuButton from "../../public/ic-menu.svg";
-import { useLanguageQuery, useTranslation } from "next-export-i18n";
+import { useTranslation } from "next-export-i18n";
 import { useModal } from "./ModalContext";
 
 interface Props {
@@ -13,7 +13,6 @@ interface Props {
 
 export const Navbar: React.FC<Props> = ({ openNavbar }) => {
   const { t } = useTranslation();
-  const [query] = useLanguageQuery();
   const { isModalOpen } = useModal();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -34,9 +33,10 @@ export const Navbar: React.FC<Props> = ({ openNavbar }) => {
   const navItems = [
     { href: "/#service", label: t("NavBarServices") },
     { href: "/#payment", label: t("NavBarPrices") },
+    { href: "/#evolve", label: t("NavBarLawyers") },
+    { href: "/#enterprise-services", label: t("NavBarEnterprises") },
     { href: "/#aliados", label: t("NavBarAliance") },
     { href: "/#testimonials", label: t("NavBarTestimonials") },
-    { href: "/#colegioAbo", label: "Promociones" },
   ];
 
   return (
