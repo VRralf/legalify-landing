@@ -12,10 +12,10 @@ export const Footer: React.FC = () => {
         <section className={styles.brandSection} aria-labelledby="brand-heading">
           <h2 id="brand-heading" className="sr-only">Información Corporativa</h2>
           <img
-            src="/logo_legalify_azul_transparente.svg"
+            src="/logo_legalify_azul_transparente.png"
             alt="Legalify - Plataforma legal digital"
             width={220}
-            height={78}
+            height={66}
             className={styles.logo}
           />
           <p className={styles.brandDescription}>
@@ -76,15 +76,8 @@ export const Footer: React.FC = () => {
             </a>
           </nav>
           
-          {/* Logo and Copyright Section */}
+          {/* Copyright Section */}
           <div className={styles.copyrightSection}>
-            <img
-              src="/logo_legalify_azul_transparente.svg"
-              alt="Legalify"
-              width={120}
-              height={42}
-              className={styles.copyrightLogo}
-            />
             <p className={styles.copyrightText}>
               {t("copyrightText")}
             </p>
