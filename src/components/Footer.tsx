@@ -75,8 +75,24 @@ export const Footer: React.FC = () => {
               </svg>
             </a>
           </nav>
+          
+          {/* Logo and Copyright Section */}
+          <div className={styles.copyrightSection}>
+            <img
+              src="/logo_legalify_azul_transparente.svg"
+              alt="Legalify"
+              width={120}
+              height={42}
+              className={styles.copyrightLogo}
+            />
+            <p className={styles.copyrightText}>
+              {t("copyrightText")}
+            </p>
+          </div>
         </section>
       </div>
     </footer>
   );
 };
+
+export default Footer;

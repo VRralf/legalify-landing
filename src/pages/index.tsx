@@ -14,7 +14,7 @@ import ChatBot from "../components/ChatBot";
 // Temporary static imports for debugging
 import ReadyToEvolveSection from "../components/ReadyToEvolveSection";
 import Plans from "../components/Plans";
-import Testimonios from "../components/Testimonios";
+import TestimonialsSlider from "../components/Testimonios";
 import PlansAbogados from "../components/PlansAbogados";
 import AcordeonAsesoramiento from "../components/AcordeonAsesoramiento";
 import ColegioAbo from "../components/ColegioAbo";
@@ -144,7 +144,7 @@ export default function Home() {
             {/* Testimonials */}
             <section className="section-secondary section-padding">
               <div className="container-fixed">
-                <Testimonios />
+                <TestimonialsSlider />
               </div>
             </section>
           </main>
