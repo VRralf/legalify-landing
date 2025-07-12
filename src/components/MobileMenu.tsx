@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "./Image";
 import { useTranslation } from "next-export-i18n";
 import styles from "../styles/components/MobileMenu.module.css";
 

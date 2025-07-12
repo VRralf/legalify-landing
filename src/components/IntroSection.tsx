@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "./Image";
 import { Button } from "./Button";
 import Link from "next/link";
 import Scene01 from "../../public/scenes01.svg";

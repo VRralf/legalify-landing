@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
+import Image from "./Image";
 import { LanguageSwitcher, useSelectedLanguage } from "next-export-i18n";
 import styles from "../styles/components/Language.module.css";
 

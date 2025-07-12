@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "./Image";
 import { useTranslation } from "next-export-i18n";
 
 interface Props {

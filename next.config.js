@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // GitHub Pages configuration  
+  trailingSlash: true,
+  basePath: '/legalify-landing',
+  assetPrefix: '/legalify-landing/',
+  
   reactStrictMode: true,
   
   // Security headers
@@ -29,13 +34,10 @@ const nextConfig = {
     ];
   },
 
-  // Image optimization
+  // Image optimization for static export
   images: {
-    formats: ['image/webp', 'image/avif'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    domains: [],
-    minimumCacheTTL: 31536000,
+    unoptimized: true,
+    loader: 'custom',
   },
 
   // Performance optimizations
@@ -67,8 +69,9 @@ const nextConfig = {
     return config;
   },
   
+  // Experimental features (removed outputStandalone for static export)
   experimental: {
-    outputStandalone: true,
+    // outputStandalone: true, // Commented out for static export
   }
 };
 

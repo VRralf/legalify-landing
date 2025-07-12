@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "./Image";
 import { Rounded } from "./Rounded";
 import { useTranslation } from "next-export-i18n";
 import styles from "../styles/components/ServiceSection.module.css";
