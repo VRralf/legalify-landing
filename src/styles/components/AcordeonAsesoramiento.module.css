@@ -1,0 +1,410 @@
+/* =============================================================================
+   ACORDEON ASESORAMIENTO - DISEÑO MODERNO PROFESIONAL 2025
+   ============================================================================= */
+
+/* Container Principal - FONDO TRANSPARENTE */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 800px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Decorative elements profesionales - TRANSPARENTES */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+  pointer-events: none;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-30%, 30%);
+  pointer-events: none;
+}
+
+/* Accordion Container - MEJORADO TRANSPARENTE */
+.accordionContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Accordion Item - TRANSPARENTE MEJORADO */
+.accordionItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.accordionItem:last-child {
+  border-bottom: none;
+}
+
+.accordionItem.isOpen {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+/* Accordion Button - HOVER MEJORADO */
+.accordionButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.accordionButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.accordionButton:hover::before {
+  opacity: 1;
+}
+
+.accordionButton:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* Button Content */
+.buttonContent {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.buttonIcon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.accordionButton:hover .buttonIcon {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.buttonText {
+  text-align: left;
+  flex: 1;
+}
+
+/* Button Title - CONTRASTE MEJORADO */
+.buttonTitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.accordionButton:hover .buttonTitle {
+  color: #ffffff;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Button Subtitle - CONTRASTE MEJORADO */
+.buttonSubtitle {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.accordionButton:hover .buttonSubtitle {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Chevron Icon - MEJORADO */
+.chevron {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.chevron.isOpen {
+  transform: rotate(180deg);
+  color: #60a5fa;
+}
+
+.accordionButton:hover .chevron {
+  color: #60a5fa;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+}
+
+/* Accordion Content - TRANSPARENTE MEJORADO */
+.accordionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.accordionContent.isOpen {
+  max-height: 2000px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contentWrapper {
+  padding: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN PROFESIONAL
+   ============================================================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    padding: 3rem 1.25rem;
+    border-radius: 1.5rem;
+  }
+  
+  .accordionButton {
+    padding: 1.5rem;
+  }
+  
+  .buttonContent {
+    gap: 1.25rem;
+  }
+  
+  .buttonIcon {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 2.5rem 1rem;
+    border-radius: 1.25rem;
+  }
+  
+  .accordionContainer {
+    border-radius: 1.25rem;
+  }
+  
+  .accordionButton {
+    padding: 1.25rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .buttonContent {
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .buttonIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+  
+  .chevron {
+    align-self: center;
+    font-size: 1.25rem;
+  }
+  
+  .contentWrapper {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 640px) {
+  .container {
+    padding: 2rem 0.75rem;
+    border-radius: 1rem;
+  }
+  
+  .accordionButton {
+    padding: 1rem;
+  }
+  
+  .buttonContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .buttonIcon {
+    align-self: center;
+  }
+  
+  .buttonText {
+    text-align: center;
+    width: 100%;
+  }
+  
+  .chevron {
+    align-self: center;
+    margin-top: 0.5rem;
+  }
+  
+  .contentWrapper {
+    padding: 1.25rem;
+  }
+}
+
+/* =============================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================================================= */
+
+.container {
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 800px;
+}
+
+.accordionButton {
+  will-change: background-color, transform;
+}
+
+.buttonIcon {
+  will-change: transform, box-shadow;
+}
+
+.chevron {
+  will-change: transform;
+}
+
+/* =============================================================================
+   ACCESSIBILITY ENHANCEMENTS - CONTRASTE ALTO
+   ============================================================================= */
+
+.accordionButton:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordionButton,
+  .buttonIcon,
+  .chevron,
+  .accordionContent {
+    transition: none;
+  }
+  
+  .accordionButton:hover .buttonIcon {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .container {
+    background: rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .accordionContainer {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .buttonTitle {
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    font-weight: 800;
+  }
+  
+  .buttonSubtitle {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    font-weight: 600;
+  }
+  
+  .chevron {
+    color: #ffffff;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
+  }
+  
+  .accordionItem {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .contentWrapper {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+}

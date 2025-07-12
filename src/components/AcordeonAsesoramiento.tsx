@@ -1,73 +1,87 @@
 import React, { useState } from "react";
 import Asesor360 from "./Asesor360";
 import PackStartups from "./PackStartups";
+import styles from "@/styles/components/AcordeonAsesoramiento.module.css";
 
-function AcordeonCombinado() {
+function AcordeonAsesoramiento() {
   const [isOpenAsesor, setIsOpenAsesor] = useState(false);
   const [isOpenStartup, setIsOpenStartup] = useState(false);
 
   return (
-    <div
-      style={{ width: "100%", border: "1px solid #ccc", borderRadius: "4px" }}
-    >
-      <button
-        onClick={() => setIsOpenAsesor(!isOpenAsesor)}
-        style={buttonStyle}
-      >
-        <span className="text-2xl mb-3 text-legalify-primary font-semibold">
-          {isOpenAsesor ? (
-            <span style={{ color: "red" }}>X</span>
-          ) : (
-            "Programa asesoramiento 360 para colaboradores de empresas"
-          )}
-        </span>
-        <span style={{ transform: isOpenAsesor ? "rotate(0.5turn)" : "" }}>
-          ▼
-        </span>
-      </button>
-      {isOpenAsesor && (
-        <div style={contentStyle}>
-          <Asesor360 />
+    <div className={styles.container}>
+      <div className={styles.accordionContainer}>
+        {/* Asesor 360 Section */}
+        <div className={`${styles.accordionItem} ${isOpenAsesor ? styles.isOpen : ''}`}>
+          <button
+            onClick={() => setIsOpenAsesor(!isOpenAsesor)}
+            className={styles.accordionButton}
+            aria-expanded={isOpenAsesor}
+            aria-controls="asesor-content"
+          >
+            <div className={styles.buttonContent}>
+              <div className={styles.buttonIcon}>
+                👥
+              </div>
+              <div className={styles.buttonText}>
+                <h3 className={styles.buttonTitle}>
+                  Programa asesoramiento 360 para colaboradores de empresas
+                </h3>
+                <p className={styles.buttonSubtitle}>
+                  Consultoría legal integral para equipos de trabajo
+                </p>
+              </div>
+            </div>
+            <div className={`${styles.chevron} ${isOpenAsesor ? styles.isOpen : ''}`}>
+              ▼
+            </div>
+          </button>
+          <div 
+            className={`${styles.accordionContent} ${isOpenAsesor ? styles.isOpen : ''}`}
+            id="asesor-content"
+          >
+            <div className={styles.contentWrapper}>
+              <Asesor360 />
+            </div>
+          </div>
         </div>
-      )}
-      <hr style={{ margin: "1rem 0" }} /> {/* Aquí se agrega el divisor */}
-      <button
-        onClick={() => setIsOpenStartup(!isOpenStartup)}
-        style={buttonStyle}
-      >
-        <span className="text-2xl mb-3 text-legalify-primary font-semibold">
-          {isOpenStartup ? (
-            <span style={{ color: "red" }}>X</span>
-          ) : (
-            "Packs de asesoramiento legal para startups"
-          )}
-        </span>
-        <span style={{ transform: isOpenStartup ? "rotate(0.5turn)" : "" }}>
-          ▼
-        </span>
-      </button>
-      {isOpenStartup && (
-        <div style={contentStyle}>
-          <PackStartups />
+
+        {/* Pack Startups Section */}
+        <div className={`${styles.accordionItem} ${isOpenStartup ? styles.isOpen : ''}`}>
+          <button
+            onClick={() => setIsOpenStartup(!isOpenStartup)}
+            className={styles.accordionButton}
+            aria-expanded={isOpenStartup}
+            aria-controls="startup-content"
+          >
+            <div className={styles.buttonContent}>
+              <div className={styles.buttonIcon}>
+                🚀
+              </div>
+              <div className={styles.buttonText}>
+                <h3 className={styles.buttonTitle}>
+                  Packs de asesoramiento legal para startups
+                </h3>
+                <p className={styles.buttonSubtitle}>
+                  Soluciones legales especializadas para emprendimientos
+                </p>
+              </div>
+            </div>
+            <div className={`${styles.chevron} ${isOpenStartup ? styles.isOpen : ''}`}>
+              ▼
+            </div>
+          </button>
+          <div 
+            className={`${styles.accordionContent} ${isOpenStartup ? styles.isOpen : ''}`}
+            id="startup-content"
+          >
+            <div className={styles.contentWrapper}>
+              <PackStartups />
+            </div>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
-const buttonStyle = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  width: "100%",
-  padding: "1rem",
-  backgroundColor: "#f5f5f5",
-  cursor: "pointer",
-};
-
-const contentStyle = {
-  padding: "1rem",
-  borderTop: "1px solid #ccc",
-};
-
-export default AcordeonCombinado;
+export default AcordeonAsesoramiento;
