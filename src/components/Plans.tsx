@@ -43,7 +43,8 @@ const Plans = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.container}>
+    <section className={styles.sectionWrapper}>
+      <div className={styles.container}>
       {/* Section Header */}
       <div className="text-center mb-16">
         <h2 
@@ -363,8 +364,8 @@ const Plans = () => {
         </div>
       </div>
 
-      {/* Plans Footer */}
-      <div className={`${styles.footer} text-center mt-8`}>
+      {/* Plans Footer Card */}
+      <div className={`${styles.footerCard} text-center mt-8`}>
         <p className={styles.disclaimerMain}>
           {t("plansIva")}
         </p>
@@ -372,7 +373,8 @@ const Plans = () => {
           {t("plansDisclaimer")}
         </p>
       </div>
-    </div>
+      </div>
+    </section>
   );
 };
 
