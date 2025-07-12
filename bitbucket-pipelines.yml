@@ -1,0 +1,78 @@
+#  BitBucket Pipeline
+
+#  manteiner = 'SolveTechEC for LEGALIFY' version="v1.0"
+
+pipelines:
+  branches:
+    prod:
+        - step:
+            name: PROD - Creacion DockerImage.
+            image: atlassian/default-image:3
+            services:
+              - docker
+            caches:
+              - docker
+            script:
+              - docker build . --file Dockerfile --tag "${AWS_ECR_IMAGE_NAME_PROD}"
+              - docker save "${AWS_ECR_IMAGE_NAME_PROD}" --output "${AWS_ECR_IMAGE_NAME_PROD}.tar"
+            artifacts:
+              - "*.tar"
+        - step:
+            name: PROD - Publicacion DockerImage - AWS ECR.
+            services:
+              - docker
+            caches:
+              - docker
+            script:
+              - docker load --input "${AWS_ECR_IMAGE_NAME_PROD}.tar"
+              - pipe: atlassian/aws-ecr-push-image:1.5.0  
+                variables:
+                  IMAGE_NAME: "${AWS_ECR_IMAGE_NAME_PROD}"
+                  TAGS: "${AWS_ECR_IMAGE_NAME_PROD_TAG} ${BITBUCKET_BUILD_NUMBER}"
+        - step:
+            name: PROD - Despliegue DockerImage - AWS ECS
+            deployment: prod
+            artifacts:
+              download: false
+            script:
+              - pipe: atlassian/aws-ecs-deploy:1.6.1
+                variables:
+                  CLUSTER_NAME: "${AWS_ECS_CLUSTER_PROD}"
+                  SERVICE_NAME: "${AWS_ECS_SERVICE_PROD}"
+                  FORCE_NEW_DEPLOYMENT: "true"
+    qa:
+        - step:
+            name: QA - Creacion DockerImage.
+            image: atlassian/default-image:3
+            services:
+              - docker
+            caches:
+              - docker
+            script:
+              - docker build . --file Dockerfile --tag "${AWS_ECR_IMAGE_NAME_QA}"
+              - docker save "${AWS_ECR_IMAGE_NAME_QA}" --output "${AWS_ECR_IMAGE_NAME_QA}.tar"
+            artifacts:
+              - "*.tar"
+        - step:
+            name: QA - Publicacion DockerImage - AWS ECR.
+            services:
+              - docker
+            caches:
+              - docker
+            script:
+              - docker load --input "${AWS_ECR_IMAGE_NAME_QA}.tar"
+              - pipe: atlassian/aws-ecr-push-image:1.5.0  
+                variables:
+                  IMAGE_NAME: "${AWS_ECR_IMAGE_NAME_QA}"
+                  TAGS: "${AWS_ECR_IMAGE_NAME_QA_TAG} ${BITBUCKET_BUILD_NUMBER}"
+        - step:
+            name: QA - Despliegue DockerImage - AWS ECS
+            deployment: qa
+            artifacts:
+              download: false
+            script:
+              - pipe: atlassian/aws-ecs-deploy:1.6.1
+                variables:
+                  CLUSTER_NAME: "${AWS_ECS_CLUSTER_QA}"
+                  SERVICE_NAME: "${AWS_ECS_SERVICE_QA}"
+                  FORCE_NEW_DEPLOYMENT: "true"

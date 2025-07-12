@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "build-static": "next build && next export",
+    "analyze": "ANALYZE=true npm run build",
+    "audit:security": "npm audit",
+    "audit:fix": "npm audit fix",
+    "type-check": "tsc --noEmit",
+    "test": "echo \"No tests yet\" && exit 0",
+    "perf": "npm run build && npm run start",
+    "clean": "rm -rf .next && rm -rf out"
+  }
+}
