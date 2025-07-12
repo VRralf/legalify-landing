@@ -2,6 +2,7 @@ import React from "react";
 import { AboutIcon } from "./AboutIcon";
 import Scene06 from "../../public/scenes06.svg";
 import { useTranslation } from "next-export-i18n";
+import { getAssetPath } from "../utils/assetPath";
 import styles from "../styles/components/AboutSection.module.css";
 
 interface AboutIconData {
@@ -17,35 +18,35 @@ export const AboutSection: React.FC = () => {
 
   const aboutIconData: AboutIconData[] = [
     {
-      icon: "/simple.svg",
+      icon: getAssetPath("simple.svg"),
       width: 48,
       height: 39,
       label: t("IconAboutLabel1"),
       description: t("IconAboutDescription1"),
     },
     {
-      icon: "/economico.svg",
+      icon: getAssetPath("economico.svg"),
       width: 37,
       height: 38,
       label: t("IconAboutLabel2"),
       description: t("IconAboutDescription2"),
     },
     {
-      icon: "/segura.svg",
+      icon: getAssetPath("segura.svg"),
       width: 36,
       height: 39,
       label: t("IconAboutLabel3"),
       description: t("IconAboutDescription3"),
     },
     {
-      icon: "/confiable.svg",
+      icon: getAssetPath("confiable.svg"),
       width: 36,
       height: 39,
       label: t("IconAboutLabel4"),
       description: t("IconAboutDescription4"),
     },
     {
-      icon: "/rentable.svg",
+      icon: getAssetPath("rentable.svg"),
       width: 54,
       height: 39,
       label: t("IconAboutLabel5"),

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "./Image";
 import { Rounded } from "./Rounded";
 import { useTranslation } from "next-export-i18n";
+import { getAssetPath } from "../utils/assetPath";
 import styles from "../styles/components/ServiceSection.module.css";
 
 export const ServiceSection: React.FC = () => {
@@ -24,7 +25,7 @@ export const ServiceSection: React.FC = () => {
             <div className={styles.imageSection}>
               <div className={styles.imageContainer}>
                 <Image 
-                  src="/component02.svg" 
+                  src={getAssetPath("component02.svg")} 
                   alt="Component illustration" 
                   width={120} 
                   height={120}
@@ -32,7 +33,7 @@ export const ServiceSection: React.FC = () => {
                   className={styles.serviceImage}
                 />
                 <Image 
-                  src="/component05.svg" 
+                  src={getAssetPath("component05.svg")} 
                   alt="Component illustration" 
                   width={120} 
                   height={120}
@@ -59,7 +60,7 @@ export const ServiceSection: React.FC = () => {
           <div className={styles.cardContent}>
             <div className={styles.imageSection}>
               <Image 
-                src="/scenes08.svg" 
+                src={getAssetPath("scenes08.svg")} 
                 alt="Service illustration" 
                 width={120} 
                 height={120}
@@ -85,7 +86,7 @@ export const ServiceSection: React.FC = () => {
           <div className={styles.cardContent}>
             <div className={styles.imageSection}>
               <Image 
-                src="/scenes05.svg" 
+                src={getAssetPath("scenes05.svg")} 
                 alt="Service illustration" 
                 width={120} 
                 height={120}
@@ -115,7 +116,7 @@ export const ServiceSection: React.FC = () => {
           <div className={styles.cardContent}>
             <div className={styles.imageSection}>
               <Image 
-                src="/scenes04.svg" 
+                src={getAssetPath("scenes04.svg")} 
                 alt="Service illustration" 
                 width={120} 
                 height={120}
@@ -141,7 +142,7 @@ export const ServiceSection: React.FC = () => {
           <div className={styles.cardContent}>
             <div className={styles.imageSection}>
               <Image 
-                src="/scenes03.svg" 
+                src={getAssetPath("scenes03.svg")} 
                 alt="Service illustration" 
                 width={120} 
                 height={120}
