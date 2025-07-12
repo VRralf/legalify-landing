@@ -1,0 +1,522 @@
+/* =============================================================================
+   FOOTER - DISEÑO MODERNO 2025 - GLASSMORPHISM
+   ============================================================================= */
+
+/* Container Principal */
+.container {
+  position: relative;
+  margin: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 2rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.08),
+    0 10px 20px rgba(59, 130, 246, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
+/* Decorative Elements */
+.container::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatRight 12s ease-in-out infinite;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatLeft 10s ease-in-out infinite;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Brand Section */
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+  filter: 
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15))
+    brightness(1.1);
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: 
+    drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2))
+    brightness(1.2);
+}
+
+.brandDescription {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0 0 1.5rem 0;
+}
+
+.companyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.companyDetail {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.companyDetail strong {
+  color: #1f2937;
+  font-weight: 700;
+}
+
+/* Social Section */
+.socialSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 1.25rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 16px rgba(59, 130, 246, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.socialLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.socialLink:hover::before {
+  opacity: 1;
+}
+
+.socialLink:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 
+    0 16px 32px rgba(59, 130, 246, 0.35),
+    0 6px 12px rgba(59, 130, 246, 0.25),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.socialIcon {
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  filter: 
+    brightness(1.2) 
+    contrast(1.1)
+    drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
+  color: white;
+}
+
+.socialLink:hover .socialIcon {
+  transform: scale(1.15);
+  filter: 
+    brightness(1.4) 
+    contrast(1.2)
+    drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3));
+}
+
+.socialDescription {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  max-width: 350px;
+}
+
+.socialSubtext {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 320px;
+}
+
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+/* Desktop Layout */
+@media (min-width: 1024px) {
+  .container {
+    margin: 2rem;
+    margin-bottom: 4rem;
+    padding: 4rem 3rem;
+    border-radius: 2.5rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  
+  .brandSection {
+    align-items: flex-start;
+  }
+  
+  .socialSection {
+    align-items: center;
+    justify-self: center;
+  }
+  
+  .logo {
+    width: 220px;
+  }
+  
+  .brandDescription {
+    font-size: 1.375rem;
+    max-width: 450px;
+  }
+  
+  .companyDetail {
+    font-size: 1rem;
+  }
+  
+  .socialLinks {
+    gap: 2.5rem;
+  }
+  
+  .socialLink {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1.375rem;
+  }
+  
+  .socialIcon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  
+  .socialDescription {
+    font-size: 1.25rem;
+    max-width: 380px;
+  }
+  
+  .socialSubtext {
+    font-size: 1rem;
+    max-width: 350px;
+  }
+}
+
+/* Tablet Layout */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    margin: 1.75rem;
+    padding: 3.5rem 2.5rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .brandSection {
+    align-items: flex-start;
+  }
+  
+  .socialSection {
+    align-items: center;
+    justify-self: center;
+  }
+  
+  .logo {
+    width: 200px;
+  }
+  
+  .brandDescription {
+    font-size: 1.25rem;
+    max-width: 360px;
+  }
+  
+  .companyDetail {
+    font-size: 0.9375rem;
+  }
+  
+  .socialLinks {
+    gap: 2rem;
+  }
+  
+  .socialLink {
+    width: 4.25rem;
+    height: 4.25rem;
+    border-radius: 1.25rem;
+  }
+  
+  .socialIcon {
+    width: 2.125rem;
+    height: 2.125rem;
+  }
+  
+  .socialDescription {
+    font-size: 1.125rem;
+    max-width: 340px;
+  }
+  
+  .socialSubtext {
+    font-size: 0.9375rem;
+    max-width: 320px;
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 767px) {
+  .container {
+    margin: 1rem;
+    margin-bottom: 2rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+  
+  .grid {
+    gap: 3rem;
+  }
+  
+  .brandSection {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 180px;
+  }
+  
+  .brandDescription {
+    font-size: 1.125rem;
+    max-width: 320px;
+    text-align: center;
+  }
+  
+  .companyDetail {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+  
+  .socialLinks {
+    gap: 1.5rem;
+  }
+  
+  .socialLink {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 1.125rem;
+  }
+  
+  .socialIcon {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+  
+  .socialDescription {
+    font-size: 1rem;
+    max-width: 300px;
+  }
+  
+  .socialSubtext {
+    font-size: 0.875rem;
+    max-width: 280px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .container {
+    margin: 0.75rem;
+    padding: 2rem 1.25rem;
+    border-radius: 1.25rem;
+  }
+  
+  .grid {
+    gap: 2.5rem;
+  }
+  
+  .logo {
+    width: 160px;
+  }
+  
+  .brandDescription {
+    font-size: 1rem;
+    max-width: 300px;
+  }
+  
+  .companyDetail {
+    font-size: 0.8125rem;
+  }
+  
+  .socialLinks {
+    gap: 1.25rem;
+  }
+  
+  .socialLink {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+  }
+  
+  .socialIcon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  .socialDescription {
+    font-size: 0.9375rem;
+    max-width: 280px;
+  }
+  
+  .socialSubtext {
+    font-size: 0.8125rem;
+    max-width: 260px;
+  }
+}
+
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+@keyframes floatLeft {
+  0%, 100% { 
+    transform: translate(-150px, -150px) scale(1); 
+  }
+  50% { 
+    transform: translate(-120px, -120px) scale(1.1); 
+  }
+}
+
+@keyframes floatRight {
+  0%, 100% { 
+    transform: translate(-200px, -200px) scale(1); 
+  }
+  50% { 
+    transform: translate(-170px, -170px) scale(0.9); 
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================================================= */
+
+.socialLink:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container,
+  .logo,
+  .socialLink,
+  .socialIcon,
+  .container::before,
+  .container::after {
+    transition: none;
+    animation: none;
+  }
+  
+  .socialLink:hover {
+    transform: none;
+  }
+  
+  .logo:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .container {
+    background: rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  .socialLink {
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .brandDescription,
+  .socialDescription {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  }
+}
