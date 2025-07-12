@@ -54,22 +54,14 @@
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 800;
   line-height: 1.1;
-  background: linear-gradient(135deg, #0f172a 0%, #1e40af 30%, #2c5aa0 60%, #000000 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 300% 300%;
-  animation: gradientFlow 6s ease infinite;
+  color: #ffffff;
   letter-spacing: -0.03em;
   position: relative;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.5));
-}
-
-@keyframes gradientFlow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  text-shadow: 
+    0 3px 6px rgba(0, 0, 0, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .title::after {
@@ -80,15 +72,21 @@
   transform: translateX(-50%);
   width: 5rem;
   height: 0.25rem;
-  background: linear-gradient(90deg, #2c5aa0, #f59e0b);
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
   border-radius: 2px;
-  opacity: 0.8;
-  animation: pulseGlow 2s ease infinite;
+  opacity: 0.9;
+  animation: pulseGlow 3s ease infinite;
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.8; box-shadow: 0 0 0 rgba(44, 90, 160, 0.3); }
-  50% { opacity: 1; box-shadow: 0 0 20px rgba(44, 90, 160, 0.4); }
+  0%, 100% { 
+    opacity: 0.8; 
+    box-shadow: 0 0 0 rgba(251, 191, 36, 0.3); 
+  }
+  50% { 
+    opacity: 1; 
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); 
+  }
 }
 
 .grid {
@@ -288,28 +286,51 @@
     0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
-.numberWrapper {
+/* =============================================================================
+   ESTILOS PARA NUMERACIÓN DE SERVICIOS 
+   ============================================================================= */
+
+.serviceNumberWrapper {
   flex-shrink: 0;
   margin-top: 0.25rem;
 }
 
-/* Service Number Styles (imported from Rounded component if needed) */
 .serviceNumber {
-  background: linear-gradient(135deg, #2c5aa0 0%, #f59e0b 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #000000;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 20px rgba(44, 90, 160, 0.25), 0 2px 8px rgba(20, 184, 166, 0.15);
+  box-shadow: 
+    0 8px 25px rgba(251, 191, 36, 0.3), 
+    0 3px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  animation: pulseNumber 2.5s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes pulseNumber {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 
+      0 8px 25px rgba(251, 191, 36, 0.3), 
+      0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  50% { 
+    transform: scale(1.05); 
+    box-shadow: 
+      0 12px 35px rgba(251, 191, 36, 0.4), 
+      0 5px 15px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .serviceNumber::before {
@@ -319,7 +340,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #f59e0b 0%, #2c5aa0 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
   border-radius: 50%;
@@ -329,15 +350,52 @@
   opacity: 1;
 }
 
-.serviceNumber span {
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
 .card:hover .serviceNumber {
   transform: scale(1.15) rotate(10deg);
-  box-shadow: 0 8px 30px rgba(20, 184, 166, 0.4), 0 4px 15px rgba(44, 90, 160, 0.3);
+  box-shadow: 
+    0 15px 40px rgba(251, 191, 36, 0.4), 
+    0 8px 20px rgba(0, 0, 0, 0.3);
+  animation: none;
+  border-color: rgba(255, 255, 255, 1);
+}
+
+/* Responsive adjustments for numbers */
+@media (max-width: 768px) {
+  .serviceNumber {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .serviceNumber {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Accesibilidad para números */
+@media (prefers-reduced-motion: reduce) {
+  .serviceNumber {
+    animation: none;
+  }
+  
+  .card:hover .serviceNumber {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-contrast: high) {
+  .serviceNumber {
+    background: #fbbf24;
+    color: #000000;
+    border: 3px solid #000000;
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.5), 
+      0 3px 10px rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* =============================================================================
@@ -499,6 +557,7 @@
   .card,
   .serviceImage,
   .title,
+  .title::after,
   .description {
     animation: none;
     transition: none;
