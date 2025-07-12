@@ -1,49 +1,80 @@
-/* =================================
-   Lawyers Plans Section Styles
-   ================================= */
+/* =============================================================================
+   PLANS ABOGADOS SECTION - DISEÑO MODERNO PROFESIONAL 2025
+   ============================================================================= */
 
-/* Lawyers Plans Container */
+/* Container Principal */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
-}
-
-/* Lawyers Plans Title */
-.titleSection {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--legal-navy);
+  padding: 4rem 1.5rem;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(248, 250, 252, 0.95) 50%, 
+    rgba(241, 245, 249, 0.98) 100%
+  );
+  border-radius: 2rem;
   position: relative;
-  display: inline-block;
-  text-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    0 4px 8px rgba(0, 0, 0, 0.05);
-  letter-spacing: -0.02em;
-  max-width: 90%;
-  margin: 0 auto;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 25px 50px -12px rgba(26, 35, 50, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.6);
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 800px;
 }
 
-.title::before {
+/* Decorative elements profesionales */
+.container::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+  pointer-events: none;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
   bottom: 0;
-  background: linear-gradient(135deg, var(--legal-navy) 0%, var(--legal-blue) 50%, var(--legal-gold) 100%);
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-30%, 30%);
+  pointer-events: none;
+}
+
+/* Title Section Profesional */
+.titleSection {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #1e293b 0%, #3b82f6 50%, #2563eb 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 0.7;
-  z-index: -1;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+  margin: 0;
 }
 
 .title::after {
@@ -54,88 +85,142 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, var(--legal-gold), var(--legal-blue));
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.3);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
-/* Lawyers Plans Grid */
+/* Grid Layout Moderno */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: 1000px;
+  gap: 2.5rem;
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-/* Lawyer Plan Card */
+/* Plan Cards - Diseño Profesional 2025 */
 .card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 246, 240, 0.95) 100%);
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(248, 250, 252, 0.92) 50%, 
+    rgba(241, 245, 249, 0.95) 100%
+  );
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(20, 184, 166, 0.15);
-  border-radius: 20px;
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 1.5rem;
   padding: 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  min-height: 500px;
-  box-shadow: 0 8px 30px rgba(26, 35, 50, 0.06), 0 2px 15px rgba(20, 184, 166, 0.04);
+  min-height: 520px;
+  box-shadow: 
+    0 10px 30px rgba(59, 130, 246, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.6);
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  contain: layout style;
+  will-change: transform, box-shadow;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.02), rgba(147, 197, 253, 0.03));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 20px 50px rgba(26, 35, 50, 0.12), 0 8px 30px rgba(20, 184, 166, 0.08);
-  border-color: var(--legal-gold);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(59, 130, 246, 0.15),
+    0 0 0 2px rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
 }
 
-/* Premium Plan Styling */
+/* Premium Plan Styling - Resaltado Profesional */
 .cardPremium {
-  border: 2px solid rgba(20, 184, 166, 0.3);
-  box-shadow: 0 15px 45px rgba(26, 35, 50, 0.12), 0 6px 25px rgba(20, 184, 166, 0.1);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 
+    0 15px 40px rgba(59, 130, 246, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.8);
+  transform: scale(1.03);
 }
 
-/* Plan Badge for Premium */
+.cardPremium:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 
+    0 30px 60px rgba(59, 130, 246, 0.2),
+    0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Plan Badge - Diseño Profesional Azul */
 .badge {
   position: absolute;
   top: 20px;
   right: -15px;
-  background: linear-gradient(45deg, var(--legal-gold), #0f766e, var(--legal-gold), #0f766e);
-  background-size: 400% 400%;
-  animation: gradientShift 3s ease-in-out infinite;
-  color: var(--legal-white);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
   padding: 0.5rem 1.5rem 0.5rem 1rem;
-  border-radius: 12px 0 0 12px;
+  border-radius: 1rem 0 0 1rem;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.4);
+  box-shadow: 
+    0 4px 15px rgba(59, 130, 246, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
   z-index: 15;
-  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(59, 130, 246, 0.4),
+    0 0 0 2px rgba(255, 255, 255, 0.3);
 }
 
 .badgeText {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
-/* Plan Headers */
+/* Plan Headers - Paleta Azul Profesional */
 .header {
   padding: 1.5rem 2rem;
   text-align: center;
-  border-radius: 20px 20px 0 0;
+  border-radius: 1.5rem 1.5rem 0 0;
+  position: relative;
+  z-index: 1;
 }
 
 .headerPremium {
-  background: linear-gradient(135deg, var(--legal-gold) 0%, #0f766e 100%);
-  color: var(--legal-white);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
 }
 
 .headerStandard {
-  background: linear-gradient(135deg, var(--legal-blue) 0%, #4a7bc8 100%);
-  color: var(--legal-white);
+  background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(71, 85, 105, 0.2);
 }
 
 /* Plan Titles */
@@ -144,16 +229,18 @@
   font-weight: 700;
   margin: 0;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
 }
 
-/* Plan Content */
+/* Plan Content - Moderno */
 .content {
   flex: 1;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .features {
@@ -169,50 +256,62 @@
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 0.75rem;
-  background: rgba(20, 184, 166, 0.05);
-  border-radius: 10px;
-  border: 1px solid rgba(20, 184, 166, 0.1);
+  padding: 1rem;
+  background: rgba(59, 130, 246, 0.04);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.2);
+  transform: translateX(4px);
 }
 
 .featureIcon {
   flex-shrink: 0;
-  width: 1.25rem;
-  height: 1.25rem;
-  background: rgba(34, 197, 94, 0.1);
-  color: #22c55e;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 0.125rem;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .featureText {
   flex: 1;
-  color: var(--legal-navy);
+  color: #475569;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* Plan CTA */
+/* Plan CTA - Botones Profesionales */
 .cta {
   padding: 2rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .button {
-  background: linear-gradient(135deg, var(--legal-blue) 0%, #4a7bc8 100%);
-  color: var(--legal-white);
+  background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  color: #ffffff;
   border: none;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   padding: 1rem 2rem;
   font-weight: 700;
   font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 6px 20px rgba(44, 90, 160, 0.25);
+  box-shadow: 
+    0 6px 20px rgba(71, 85, 105, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -225,9 +324,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--legal-gold) 0%, #0f766e 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  border-radius: inherit;
 }
 
 .button:hover::before {
@@ -235,8 +335,10 @@
 }
 
 .button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(44, 90, 160, 0.4);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 10px 30px rgba(71, 85, 105, 0.35),
+    0 0 0 2px rgba(59, 130, 246, 0.3);
 }
 
 .button span {
@@ -245,31 +347,60 @@
 }
 
 .buttonPremium {
-  background: linear-gradient(135deg, var(--legal-gold) 0%, #0f766e 100%);
-  box-shadow: 0 6px 20px rgba(20, 184, 166, 0.25);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  box-shadow: 
+    0 6px 20px rgba(59, 130, 246, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .buttonPremium::before {
-  background: linear-gradient(135deg, var(--legal-blue) 0%, #4a7bc8 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
 }
 
-/* Responsive Design */
+.buttonPremium:hover {
+  box-shadow: 
+    0 10px 30px rgba(59, 130, 246, 0.4),
+    0 0 0 2px rgba(96, 165, 250, 0.5);
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN PROFESIONAL
+   ============================================================================= */
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    padding: 3rem 1.25rem;
+    border-radius: 1.5rem;
+  }
+  
+  .grid {
+    gap: 2rem;
+    max-width: 900px;
+  }
+  
+  .card {
+    min-height: 480px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .container {
-    padding: 0 1rem;
+    padding: 2.5rem 1rem;
+    border-radius: 1.25rem;
   }
   
   .grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   
   .card {
-    min-height: 400px;
+    min-height: 420px;
   }
   
   .title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
   }
   
   .header {
@@ -283,11 +414,21 @@
   .cta {
     padding: 1.5rem;
   }
+  
+  .cardPremium {
+    transform: none;
+  }
 }
 
+/* Mobile Small */
 @media (max-width: 640px) {
+  .container {
+    padding: 2rem 0.75rem;
+    border-radius: 1rem;
+  }
+  
   .title {
-    font-size: 1.75rem;
+    font-size: clamp(1.375rem, 6vw, 1.75rem);
   }
   
   .planTitle {
@@ -300,17 +441,85 @@
     padding: 0.4rem 1.25rem 0.4rem 0.75rem;
     font-size: 0.7rem;
   }
+  
+  .card {
+    min-height: 380px;
+  }
 }
 
-/* Gradient animation keyframe */
+/* =============================================================================
+   ANIMACIONES Y MICRO-INTERACCIONES
+   ============================================================================= */
+
 @keyframes gradientShift {
-  0% {
+  0%, 100% {
     background-position: 0% 50%;
   }
   50% {
     background-position: 100% 50%;
   }
-  100% {
-    background-position: 0% 50%;
+}
+
+/* =============================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================================================= */
+
+.container {
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 800px;
+}
+
+.card {
+  contain: layout style;
+  will-change: transform, box-shadow;
+}
+
+.button {
+  will-change: transform, box-shadow;
+}
+
+/* =============================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .container,
+  .card,
+  .button,
+  .badge,
+  .feature,
+  .title {
+    animation: none;
+    transition: none;
+  }
+  
+  .card:hover,
+  .button:hover,
+  .feature:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .container {
+    background: rgba(255, 255, 255, 0.98);
+    border: 2px solid #1e293b;
+  }
+  
+  .card {
+    background: #ffffff;
+    border: 2px solid #475569;
+  }
+  
+  .title {
+    background: #1e293b;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .featureText {
+    color: #1e293b;
   }
 }
