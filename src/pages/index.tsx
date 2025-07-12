@@ -110,7 +110,7 @@ export default function Home() {
               <div className="container-fixed">
                 <h2 
                   id="enterprise-services"
-                  className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-12 text-current"
+                  className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-12 text-legal-navy"
                 >
                   Servicios para empresas
                 </h2>
@@ -123,7 +123,7 @@ export default function Home() {
               <div className="container-fixed">
                 <h2 
                   id="college-promotion"
-                  className="text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-12 leading-tight text-current"
+                  className="text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-12 leading-tight text-legal-white"
                 >
                   Promoción para matriculados y matriculadas del Colegio Público de
                   Abogados de la Capital Federal

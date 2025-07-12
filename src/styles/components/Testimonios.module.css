@@ -63,7 +63,7 @@
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
   line-height: 1.15;
-  color: #ffffff;
+  color: #1a2332; /* Legal navy - oscuro para fondo claro */
   letter-spacing: -0.02em;
   position: relative;
   display: inline-block;
@@ -192,7 +192,7 @@
 /* Message */
 .message {
   font-size: clamp(0.95rem, 2.2vw, 1.125rem);
-  color: rgba(255, 255, 255, 0.9);
+  color: #1a2332; /* Legal navy - oscuro para fondo claro */
   line-height: 1.6;
   font-weight: 500;
   margin: 0;
@@ -207,7 +207,7 @@
 }
 
 .testimonialCard:hover .message {
-  color: rgba(255, 255, 255, 0.95);
+  color: #0f1419; /* Más oscuro en hover */
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
 }
 
@@ -255,14 +255,14 @@
 .authorName {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #1a2332; /* Legal navy - oscuro para fondo claro */
   margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
 }
 
 .testimonialCard:hover .authorName {
-  color: #ffffff;
+  color: #1a2332; /* Legal navy - oscuro para fondo claro */
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -524,17 +524,18 @@
   }
   
   .title {
-    color: #ffffff;
+    color: #1a2332; /* Legal navy - oscuro para fondo claro */
     text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
   }
   
   .message {
-    color: rgba(255, 255, 255, 0.95);
+    color: #0f1419; /* Más oscuro en hover */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   }
   
   .authorName {
-    color: #ffffff;
+    color: #1a2332; /* Legal navy - oscuro para fondo claro */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   }
 }
+
