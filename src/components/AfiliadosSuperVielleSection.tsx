@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "./Image";
 import { useTranslation } from "next-export-i18n";
+import { getAssetPath } from "../utils/assetPath";
 
 interface Props {
   id: string;
@@ -15,7 +16,7 @@ export const AfiliadosSuperVielleSection: React.FC<Props> = ({ id }) => {
         <div className="lg:col-span-2 self-center">
           <div className="flex items-end my-6 md:w-[20rem] xl:w-[27rem] 2xl:w-[32rem]">
             <Image
-              src="/afiliados/supervielle/logoES.png"
+              src={getAssetPath("afiliados/supervielle/logoES.png")}
               alt="Supervielle Bank Logo"
               width={500}
               height={200}

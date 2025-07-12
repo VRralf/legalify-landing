@@ -2,6 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import Colegioform from "../components/Colegioform";
 import { useModal } from "./ModalContext";
+import { getAssetPath } from "../utils/assetPath";
 import styles from "../styles/components/ColegioAbo.module.css";
 
 function ColegioAbo() {
@@ -15,7 +16,7 @@ function ColegioAbo() {
             <div className={styles.imageContainer} onClick={openModal}>
               <img
                 id="colegioAbo"
-                src="colegio1.png"
+                src={getAssetPath("colegio1.png")}
                 alt="Promoción para matriculados del Colegio Público de Abogados de la Capital Federal"
                 width={700}
                 height={700}

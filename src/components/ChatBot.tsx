@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-export-i18n";
+import { getAssetPath } from "../utils/assetPath";
 import styles from '../styles/components/ChatBot.module.css';
 
 interface Props {}
@@ -49,7 +50,7 @@ const ChatBot: React.FC<Props> = () => {
         type="button"
       >
         <img 
-          src="/Flags/telefonista.png" 
+          src={getAssetPath("Flags/telefonista.png")} 
           alt={t("chatBotMobileText")}
           className={styles.imgButton}
           width={32}

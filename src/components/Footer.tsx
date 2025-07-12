@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "next-export-i18n";
+import { getAssetPath } from "../utils/assetPath";
 import styles from '../styles/components/Footer.module.css';
 
 export const Footer: React.FC = () => {
@@ -12,7 +13,7 @@ export const Footer: React.FC = () => {
         <section className={styles.brandSection} aria-labelledby="brand-heading">
           <h2 id="brand-heading" className="sr-only">Información Corporativa</h2>
           <img
-            src="/logo_legalify_azul_transparente.png"
+            src={getAssetPath("logo_legalify_azul_transparente.png")}
             alt="Legalify - Plataforma legal digital"
             width={220}
             height={66}

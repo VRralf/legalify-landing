@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "./Image";
 import { LanguageSwitcher, useSelectedLanguage } from "next-export-i18n";
+import { getAssetPath } from "../utils/assetPath";
 import styles from "../styles/components/Language.module.css";
 
 const languages = [
-  { code: 'es', name: 'Español', flag: '/Flags/ESFlag.png' },
-  { code: 'en', name: 'English', flag: '/Flags/ENFlag.png' },
-  { code: 'it', name: 'Italiano', flag: '/Flags/ITFlag.png' },
+  { code: 'es', name: 'Español', flag: getAssetPath('Flags/ESFlag.png') },
+  { code: 'en', name: 'English', flag: getAssetPath('Flags/ENFlag.png') },
+  { code: 'it', name: 'Italiano', flag: getAssetPath('Flags/ITFlag.png') },
 ];
 
 const Language: React.FC = () => {

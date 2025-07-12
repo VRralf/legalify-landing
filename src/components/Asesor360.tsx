@@ -1,19 +1,20 @@
 import React from "react";
 import Asesor360Form from "./Asesor360Form";
+import { getAssetPath } from "../utils/assetPath";
 
 function Asesor360() {
   return (
     <div className="container mx-auto max-w-5xl m-auto">
       <div className="banner flex justify-center items-center">
         <img
-          src="BannerAsesor.png"
+          src={getAssetPath("BannerAsesor.png")}
           alt="Descripción de la imagen"
           className="w-full md:w-1/2"
         />
       </div>
       <div className="section flex flex-col md:flex-row items-center border-b border-legalify-primary py-5 h-auto">
         <img
-          src="imagen1.png"
+          src={getAssetPath("imagen1.png")}
           alt="Descripción de la imagen"
           className="w-1/4 h-1/4 md:w-1/8 md:h-1/8 lg:w-1/16 lg:h-1/16 object-cover mx-auto md:mx-0"
         />
@@ -34,7 +35,7 @@ function Asesor360() {
 
       <div className="section flex flex-col md:flex-row items-center border-b border-legalify-primary py-5 h-auto">
         <img
-          src="imagen2.png"
+          src={getAssetPath("imagen2.png")}
           alt="Descripción de la imagen"
           className="w-1/4 h-1/4 md:w-1/8 md:h-1/8 lg:w-1/16 lg:h-1/16 object-cover"
         />
@@ -63,7 +64,7 @@ function Asesor360() {
 
       <div className="section flex flex-col md:flex-row items-center border-b border-legalify-primary py-5 h-auto">
         <img
-          src="imagen3.png"
+          src={getAssetPath("imagen3.png")}
           alt="Descripción de la imagen"
           className="w-1/4 h-1/4 md:w-1/8 md:h-1/8 lg:w-1/16 lg:h-1/16 object-cover"
         />
@@ -89,7 +90,7 @@ function Asesor360() {
 
       <div className="section flex flex-col md:flex-row items-center border-b border-legalify-primary py-5 h-auto">
         <img
-          src="imagen4.png"
+          src={getAssetPath("imagen4.png")}
           alt="Descripción de la imagen"
           className="imageSec"
         />
@@ -116,7 +117,7 @@ function Asesor360() {
 
       <div className="section flex flex-col md:flex-row items-center border-b border-legalify-primary py-5 h-auto">
         <img
-          src="imagen5.png"
+          src={getAssetPath("imagen5.png")}
           alt="Descripción de la imagen"
           className="w-1/4 h-1/4 md:w-1/8 md:h-1/8 lg:w-1/32 lg:h-1/32 object-cover"
         />

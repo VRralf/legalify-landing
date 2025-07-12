@@ -4,6 +4,7 @@ import { Button } from "./Button";
 import Link from "next/link";
 import Scene01 from "../../public/scenes01.svg";
 import { useTranslation } from "next-export-i18n";
+import { getAssetPath } from "../utils/assetPath";
 import styles from "@/styles/components/IntroSection.module.css";
 
 interface Props {
@@ -24,7 +25,7 @@ export const IntroSection: React.FC<Props> = ({ setChecked }) => {
           {/* Mobile Logo */}
           <div className={styles.mobileLogo}>
             <Image
-              src="/logo_legalify_azul_transparente_white.png"
+              src={getAssetPath("logo_legalify_azul_transparente_white.png")}
               alt="Legalify logo"
               height={40}
               width={114}

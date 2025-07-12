@@ -1,10 +1,11 @@
 import React from "react";
 import Asesor360Form from "./Asesor360Form";
 import { Logger } from "../utils/Logger";
+import { getAssetPath } from "../utils/assetPath";
 
 function PackStartups() {
   // Asume que 'Startups1.png', 'Startups2.png', etc. están en la carpeta 'public'
-  const paginas = Array.from({ length: 9 }, (_, i) => `/startups${i + 1}.png`);
+  const paginas = Array.from({ length: 9 }, (_, i) => getAssetPath(`startups${i + 1}.png`));
 
   Logger.log(paginas);
   return (

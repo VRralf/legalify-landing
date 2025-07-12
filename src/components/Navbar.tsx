@@ -5,6 +5,7 @@ import Language from "./Language";
 import MenuButton from "../../public/ic-menu.svg";
 import { useTranslation } from "next-export-i18n";
 import { useModal } from "./ModalContext";
+import { getAssetPath } from "../utils/assetPath";
 import styles from "../styles/components/Navbar.module.css";
 
 interface Props {
@@ -73,7 +74,7 @@ export const Navbar: React.FC<Props> = ({ openNavbar }) => {
               <Link href="/">
                 <a className={styles.logo} aria-label="Ir a la página de inicio">
                   <img
-                    src="/logo_legalify_azul_transparente.png"
+                    src={getAssetPath("logo_legalify_azul_transparente.png")}
                     alt="Legalify - Servicios Legales"
                     className={styles.logoImage}
                     loading="eager"

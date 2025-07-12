@@ -1,4 +1,5 @@
 import React from "react";
+import { getAssetPath } from "../utils/assetPath";
 import styles from "../styles/components/AfiliadosTributoSimple.module.css";
 
 const AfiliadosTributoSimple = () => {
@@ -6,7 +7,7 @@ const AfiliadosTributoSimple = () => {
     <div className={styles.container}>
       <div className={styles.imageContainer}>
         <img
-          src={"afiliados/tributoSimple/TributoSimpleLogo.jpeg"}
+          src={getAssetPath("afiliados/tributoSimple/TributoSimpleLogo.jpeg")}
           alt="Logo de Tributo Simple - Aliado estratégico de Legalify"
           className={styles.logo}
         />

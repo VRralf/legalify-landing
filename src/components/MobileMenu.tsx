@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "./Image";
 import { useTranslation } from "next-export-i18n";
+import { getAssetPath } from "../utils/assetPath";
 import styles from "../styles/components/MobileMenu.module.css";
 
 interface MobileMenuProps {
@@ -40,7 +41,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       
       <div className={styles.content}>
         <Image
-          src="/logo_legalify_azul_transparente_white.png"
+          src={getAssetPath("logo_legalify_azul_transparente_white.png")}
           alt="Legalify logo"
           height={43}
           width={121}
