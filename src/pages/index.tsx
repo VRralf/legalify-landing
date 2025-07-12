@@ -76,7 +76,7 @@ export default function Home() {
             </section>
 
             {/* Services Section */}
-            <section className="section-secondary section-padding">
+            <section className="section-dark section-padding">
               <div className="container-fixed">
                 <ServiceSection />
               </div>
@@ -106,11 +106,11 @@ export default function Home() {
             <div className="section-divider"></div>
             
             {/* Enterprise Services Section */}
-            <section className="section-secondary section-padding" aria-labelledby="enterprise-services">
+            <section className="section-dark section-padding" aria-labelledby="enterprise-services">
               <div className="container-fixed">
                 <h2 
                   id="enterprise-services"
-                  className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-12 text-legal-navy"
+                  className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-12 text-legal-white"
                 >
                   Servicios para empresas
                 </h2>
@@ -135,14 +135,14 @@ export default function Home() {
             <div className="section-divider"></div>
             
             {/* Affiliates Section */}
-            <section id="aliados" className="section-neutral section-padding">
+            <section id="aliados" className="section-dark section-padding">
               <div className="container-fixed">
                 {showAfiliadosTributoSimple && <AfiliadosTributoSimple />}
               </div>
             </section>
             
             {/* Testimonials */}
-            <section className="section-secondary section-padding">
+            <section className="section-dark section-padding">
               <div className="container-fixed">
                 <TestimonialsSlider />
               </div>
