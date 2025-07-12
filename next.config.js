@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production'
+
 const nextConfig = {
-  // GitHub Pages configuration  
+  // GitHub Pages configuration (only for production)
   trailingSlash: true,
-  basePath: '/legalify-landing',
-  assetPrefix: '/legalify-landing/',
+  basePath: isProd ? '/legalify-landing' : '',
+  assetPrefix: isProd ? '/legalify-landing/' : '',
   
   reactStrictMode: true,
   
