@@ -10,6 +10,7 @@ const TestimonialsSlider = () => {
       message: string;
     }[]
   >([]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const { t } = useTranslation();
 
@@ -52,18 +53,27 @@ const TestimonialsSlider = () => {
     },
   ];
 
+  const updateTestimonies = (newIndex: number) => {
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      setCurrentTestimonies(testimonies.slice(newIndex, newIndex + 3));
+      setIsTransitioning(false);
+    }, 300);
+  };
+
   useEffect(() => {
-    setCurrentTestimonies(testimonies.slice(currentIndex, currentIndex + 3));
+    updateTestimonies(currentIndex);
   }, [currentIndex]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(
-        currentIndex >= testimonies.length - 3 ? 0 : currentIndex + 3
-      );
-    }, 5000);
+      const nextIndex = currentIndex >= testimonies.length - 3 ? 0 : currentIndex + 3;
+      setCurrentIndex(nextIndex);
+    }, 6000); // Aumentado a 6 segundos para mejor experiencia
+    
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, testimonies.length]);
 
   const QuoteIcon = () => (
     <svg
@@ -77,7 +87,9 @@ const TestimonialsSlider = () => {
   );
 
   const goToTestimonial = (index: number) => {
-    setCurrentIndex(index);
+    if (index !== currentIndex && !isTransitioning) {
+      setCurrentIndex(index);
+    }
   };
 
   return (
@@ -94,8 +106,10 @@ const TestimonialsSlider = () => {
       <div className={styles.testimonialsGrid}>
         {currentTestimonies.map((testimony, index) => (
           <article
-            key={testimony.name}
-            className={styles.testimonialCard}
+            key={`${testimony.name}-${currentIndex}-${index}`}
+            className={`${styles.testimonialCard} ${
+              isTransitioning ? styles.exiting : styles.entering
+            }`}
             onClick={() => goToTestimonial(currentIndex + index)}
             role="button"
             tabIndex={0}

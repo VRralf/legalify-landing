@@ -93,6 +93,8 @@
   gap: 2rem;
   position: relative;
   z-index: 1;
+  min-height: 300px;
+  align-items: stretch;
 }
 
 /* Testimonial Card */
@@ -102,8 +104,8 @@
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1.75rem;
-  padding: 2rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.75rem;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   box-shadow: 
@@ -111,9 +113,42 @@
     0 0 0 1px rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  min-height: 200px;
+  gap: 1.25rem;
+  height: 100%;
+  min-height: 220px;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.testimonialCard:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.testimonialCard:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.testimonialCard:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Animation classes for smooth transitions */
+.testimonialCard.entering {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.testimonialCard.exiting {
+  animation: fadeOutDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.testimonialCard.slideInRight {
+  animation: slideInFromRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.testimonialCard.slideInLeft {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .testimonialCard::before {
@@ -166,6 +201,9 @@
   font-style: italic;
   position: relative;
   z-index: 1;
+  min-height: 100px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .testimonialCard:hover .message {
@@ -260,11 +298,18 @@
   .testimonialsGrid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.75rem;
+    min-height: 260px;
   }
   
   .testimonialCard {
-    padding: 1.75rem;
+    padding: 1.5rem;
     border-radius: 1.5rem;
+    min-height: 200px;
+    gap: 1rem;
+  }
+  
+  .message {
+    min-height: 80px;
   }
 }
 
@@ -286,24 +331,26 @@
   .testimonialsGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    min-height: 220px;
   }
   
   .testimonialCard {
-    padding: 1.5rem;
-    gap: 1.25rem;
+    padding: 1.25rem;
+    gap: 1rem;
     min-height: 180px;
   }
   
   .quoteIcon {
     width: 1.5rem;
     height: 1.5rem;
-    top: 1.25rem;
-    right: 1.25rem;
+    top: 1rem;
+    right: 1rem;
   }
   
   .message {
     font-size: clamp(0.9rem, 2.5vw, 1rem);
     line-height: 1.5;
+    min-height: 70px;
   }
   
   .avatar {
@@ -327,21 +374,26 @@
     padding: 2rem 0.75rem;
   }
   
+  .testimonialsGrid {
+    min-height: 200px;
+  }
+  
   .testimonialCard {
-    padding: 1.25rem;
-    gap: 1rem;
+    padding: 1rem;
+    gap: 0.875rem;
     min-height: 160px;
   }
   
   .quoteIcon {
     width: 1.25rem;
     height: 1.25rem;
-    top: 1rem;
-    right: 1rem;
+    top: 0.875rem;
+    right: 0.875rem;
   }
   
   .message {
     font-size: 0.875rem;
+    min-height: 60px;
   }
   
   .authorSection {
@@ -382,6 +434,50 @@
   }
   50% { 
     transform: translate(20%, -20%) scale(0.9); 
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 
