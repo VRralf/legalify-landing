@@ -24,7 +24,7 @@ export interface IPlanCicloPlanAmount {
 
 export function getPlanInfos(planIds: number[], ciclo: number = -1): Promise<IPlanCicloPlanAmount> {
   let promiseResult: Promise<IPlanCicloPlanAmount> = new Promise((resolveResult, rejectResult) => {
-    let promise: Promise<string> = new Promise((resolve, reject) => {
+    let promise: Promise<string> = new Promise((resolve, _reject) => {
       const queryParams = new URLSearchParams(window.location.search);
       const paramPais: string | null = queryParams.get("pais");
   
@@ -39,28 +39,34 @@ export function getPlanInfos(planIds: number[], ciclo: number = -1): Promise<IPl
             Logger.log(`consulta IP: ${resp.countryCode}`);
             resolve(resp.countryCode);
           })
-          .catch((err) => {
+          .catch((_err) => {
             resolve("");
           });
       }
     });
-  
     promise.then((countryCode) => {
       Logger.log(`Pais seleccionado: ${countryCode}`);
-      getPlanAmountsCountry2Digits(countryCode, ciclo).then((resp: IPlanAmount[]) => {
+      getPlanAmountsCountry2Digits(countryCode, ciclo, planIds).then((resp: IPlanAmount[]) => {
         let data: IPlanCicloPlanAmount = {};
         let ciclo: ICicloPlanAmount;
-  
-        Logger.log("Respuesta precios:", resp);
-        resp.forEach(row => {
-          row.monedaSimbolo = decodeHtml(`&#${row.monedaSimbolo};`)
 
-          if (!data[row.planId])
-            data[row.planId] = {};
-          
-          ciclo = data[row.planId];
-          ciclo[row.ciclo] = row;
-        });
+        Logger.log("Respuesta precios:", resp);
+        
+        // Validar que resp no sea null o undefined y sea un array
+        if (resp && Array.isArray(resp)) {
+          resp.forEach(row => {
+            row.monedaSimbolo = decodeHtml(`&#${row.monedaSimbolo};`)
+
+            if (!data[row.planId])
+              data[row.planId] = {};
+            
+            ciclo = data[row.planId];
+            ciclo[row.ciclo] = row;
+          });
+        } else {
+          Logger.log("Warning: Respuesta vacía o inválida:", resp);
+        }
+        
         Logger.log("Info MAP: ", data);
         resolveResult(data);
       });
@@ -80,7 +86,7 @@ function getPlanAmountsCountry2Digits(
   planIds: number[] = [2, 3, 4, 5, 6]
 ): Promise<IPlanAmount[]> {
   const COUNTRY_AR = "AR";
-  const promise: Promise<any> = new Promise((resolve, reject) => {
+  const promise: Promise<any> = new Promise((resolve, _reject) => {
     if (!country2Code) country2Code = COUNTRY_AR;
 
     let url: string = `${process.env.NEXT_PUBLIC_URL_APP_API}/jurisdiccion/country2Code/${country2Code}`;
@@ -126,27 +132,34 @@ export async function getPlanDefaultAmounts(
   let params: string = "";
   let data: any = null;
 
-  if (ciclo || ciclo === 0) {
-    params = appendIfNotEmpty(params);
-    params = `${params}ciclo=${ciclo}`;
-  }
-  if (jurisdiccionId) {
-    params = appendIfNotEmpty(params);
-    params = `${params}jurisdiccionId=${jurisdiccionId}`;
-  }
-  if (planIds) {
-    planIds.forEach((planId) => {
+  try {
+    if (ciclo || ciclo === 0) {
       params = appendIfNotEmpty(params);
-      params = `${params}planIds=${planId}`;
-    });
-  }
+      params = `${params}ciclo=${ciclo}`;
+    }
+    if (jurisdiccionId) {
+      params = appendIfNotEmpty(params);
+      params = `${params}jurisdiccionId=${jurisdiccionId}`;
+    }
+    if (planIds) {
+      planIds.forEach((planId) => {
+        params = appendIfNotEmpty(params);
+        params = `${params}planIds=${planId}`;
+      });
+    }
 
-  let url: string = `${process.env.NEXT_PUBLIC_URL_APP_API}/multipago/cliente/plan/defaultamounts?${params}`;
-  let response = await fetch(url);
-  if (response.status < 400) {
-    data = await response.json();
+    let url: string = `${process.env.NEXT_PUBLIC_URL_APP_API}/multipago/cliente/plan/defaultamounts?${params}`;
+    let response = await fetch(url);
+    if (response.status < 400) {
+      data = await response.json();
+    }
+    
+    // Asegurar que siempre se retorne un array
+    return data || [];
+  } catch (error) {
+    Logger.log("Error en getPlanDefaultAmounts:", error);
+    return [];
   }
-  return data;
 }
 
 export function appendIfNotEmpty(value: string): string {

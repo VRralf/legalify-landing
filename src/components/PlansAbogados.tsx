@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useLanguageQuery, useTranslation } from "next-export-i18n";
+import { useTranslation } from "next-export-i18n";
+import styles from "@/styles/components/PlansAbogados.module.css";
 
-import { IPlanCicloPlanAmount, getPlanInfos, getPCPASafe, getPCPASafeMX } from "../services/PlanInfoService"
+import { IPlanCicloPlanAmount, getPlanInfos, getPCPASafeMX } from "../services/PlanInfoService"
 import { Logger } from "../utils/Logger";
 
 const PlansAbogados = () => {
   const { t } = useTranslation();
-  const [query] = useLanguageQuery();
-  const [showPlanAbogados, setShowPlanAbogados] = useState(false);
-  
   const [planInfos, setPlanInfos] = useState<IPlanCicloPlanAmount>({});
-
-  const handleClick = () => {
-    setShowPlanAbogados(!showPlanAbogados);
-  };
 
   useEffect(() => {
     doLoadPlanInfo();
@@ -27,122 +21,124 @@ const PlansAbogados = () => {
   }
 
   return (
-    <div className="lawyers-plans-container">
+    <div className={styles.container}>
       {/* Title Section */}
-      <div className="lawyers-plans-title-section">
-        <h2 className="lawyers-plans-title">
+      <div className={styles.titleSection}>
+        <h2 className={styles.title}>
           {t("abogadoTitle")}
         </h2>
       </div>
 
       {/* Plans Grid */}
-      <div className="lawyers-plans-grid">
+      <div className={styles.grid}>
         {/* Premium Plan */}
-        <div className="lawyer-plan-card lawyer-plan-card-premium">
+        <div className={`${styles.card} ${styles.cardPremium}`}>
           {/* Badge */}
-          <div className="lawyer-plan-badge">
-            <span className="lawyer-plan-badge-text">
+          <div className={styles.badge}>
+            <span className={styles.badgeText}>
               {t("clientRecommended")}
             </span>
           </div>
 
           {/* Header */}
-          <div className="lawyer-plan-header lawyer-plan-header-premium">
-            <h3 className="lawyer-plan-title">
+          <div className={`${styles.header} ${styles.headerPremium}`}>
+            <h3 className={styles.planTitle}>
               {getPCPASafeMX(5, 1, "planNombre", "Premium", planInfos)}
             </h3>
           </div>
 
           {/* Features */}
-          <div className="lawyer-plan-features">
-            <div className="lawyer-plan-feature">
-              <div className="lawyer-plan-feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="lawyer-plan-feature-text">
-                {t("paymentTitleDescription")}
-              </span>
-            </div>
+          <div className={styles.content}>
+            <ul className={styles.features}>
+              <li className={styles.feature}>
+                <div className={styles.featureIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span className={styles.featureText}>
+                  {t("paymentTitleDescription")}
+                </span>
+              </li>
 
-            <div className="lawyer-plan-feature">
-              <div className="lawyer-plan-feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="lawyer-plan-feature-text">
-                {t("paymentMens")}<br/>
-                {t("paymentAnu")}
-              </span>
-            </div>
+              <li className={styles.feature}>
+                <div className={styles.featureIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span className={styles.featureText}>
+                  {t("paymentMens")}<br/>
+                  {t("paymentAnu")}
+                </span>
+              </li>
 
-            <div className="lawyer-plan-feature">
-              <div className="lawyer-plan-feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="lawyer-plan-feature-text">
-                {t("premiumSpeciaty")}<br/>
-                {t("premiumJurisdict")}
-              </span>
-            </div>
+              <li className={styles.feature}>
+                <div className={styles.featureIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span className={styles.featureText}>
+                  {t("premiumSpeciaty")}<br/>
+                  {t("premiumJurisdict")}
+                </span>
+              </li>
 
-            <div className="lawyer-plan-feature">
-              <div className="lawyer-plan-feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="lawyer-plan-feature-text">
-                {t("paymentReun")}<br/>
-                {t("paymentEmer")}
-              </span>
-            </div>
+              <li className={styles.feature}>
+                <div className={styles.featureIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span className={styles.featureText}>
+                  {t("paymentReun")}<br/>
+                  {t("paymentEmer")}
+                </span>
+              </li>
+            </ul>
           </div>
 
           {/* CTA */}
-          <div className="lawyer-plan-cta">
+          <div className={styles.cta}>
             <a href={process.env.NEXT_PUBLIC_URL_APP + "/redes?rol=2"}>
-              <button className="lawyer-plan-button lawyer-plan-button-premium">
+              <button className={`${styles.button} ${styles.buttonPremium}`}>
                 <span>{t("buttonContract")}</span>
               </button>
             </a>
@@ -150,104 +146,106 @@ const PlansAbogados = () => {
         </div>
 
         {/* Corporate Plan */}
-        <div className="lawyer-plan-card lawyer-plan-card-corporate">
+        <div className={styles.card}>
           {/* Header */}
-          <div className="lawyer-plan-header lawyer-plan-header-corporate">
-            <h3 className="lawyer-plan-title">
+          <div className={`${styles.header} ${styles.headerStandard}`}>
+            <h3 className={styles.planTitle}>
               {getPCPASafeMX(6, 1, "planNombre", t("corporateTitle"), planInfos)}
             </h3>
           </div>
 
           {/* Features */}
-          <div className="lawyer-plan-features">
-            <div className="lawyer-plan-feature">
-              <div className="lawyer-plan-feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="lawyer-plan-feature-text">
-                {t("paymentTitleDescription")}
-              </span>
-            </div>
+          <div className={styles.content}>
+            <ul className={styles.features}>
+              <li className={styles.feature}>
+                <div className={styles.featureIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span className={styles.featureText}>
+                  {t("paymentTitleDescription")}
+                </span>
+              </li>
 
-            <div className="lawyer-plan-feature">
-              <div className="lawyer-plan-feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="lawyer-plan-feature-text">
-                {t("paymentMens")}<br/>
-                {t("paymentAnu")}
-              </span>
-            </div>
+              <li className={styles.feature}>
+                <div className={styles.featureIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span className={styles.featureText}>
+                  {t("paymentMens")}<br/>
+                  {t("paymentAnu")}
+                </span>
+              </li>
 
-            <div className="lawyer-plan-feature">
-              <div className="lawyer-plan-feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="lawyer-plan-feature-text">
-                {t("corporateSpeciaty")}<br/>
-                {t("corporateJurisdict")}
-              </span>
-            </div>
+              <li className={styles.feature}>
+                <div className={styles.featureIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span className={styles.featureText}>
+                  {t("corporateSpeciaty")}<br/>
+                  {t("corporateJurisdict")}
+                </span>
+              </li>
 
-            <div className="lawyer-plan-feature">
-              <div className="lawyer-plan-feature-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="lawyer-plan-feature-text">
-                {t("paymentReun")}<br/>
-                {t("paymentEmer")}
-              </span>
-            </div>
+              <li className={styles.feature}>
+                <div className={styles.featureIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span className={styles.featureText}>
+                  {t("paymentReun")}<br/>
+                  {t("paymentEmer")}
+                </span>
+              </li>
+            </ul>
           </div>
 
           {/* CTA */}
-          <div className="lawyer-plan-cta">
+          <div className={styles.cta}>
             <a href={process.env.NEXT_PUBLIC_URL_APP + "/redes?rol=2"}>
-              <button className="lawyer-plan-button lawyer-plan-button-corporate">
+              <button className={styles.button}>
                 <span>{t("buttonContract")}</span>
               </button>
             </a>

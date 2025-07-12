@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/navbar-globals.css";
 import type { AppProps } from "next/app";
 import { ModalProvider } from "../components/ModalContext";
 import { initWebVitals } from "../utils/webVitals";

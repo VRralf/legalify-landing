@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Button } from "./Button";
 import Link from "next/link";
 import Scene01 from "../../public/scenes01.svg";
-import { useLanguageQuery, useTranslation } from "next-export-i18n";
+import { useTranslation } from "next-export-i18n";
+import styles from "@/styles/components/IntroSection.module.css";
 
 interface Props {
   checked: boolean;
@@ -12,23 +13,22 @@ interface Props {
 
 export const IntroSection: React.FC<Props> = ({ setChecked }) => {
   const { t } = useTranslation();
-  const [query] = useLanguageQuery();
 
   return (
-    <section className="min-h-[80vh] flex items-center justify-center py-8 lg:py-16" aria-labelledby="hero-title">
-      <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center max-w-7xl mx-auto px-4">
+    <section className={styles.heroSection} aria-labelledby="hero-title">
+      <div className={styles.heroContainer}>
         
         {/* Content Column */}
-        <div className="lg:col-span-3 text-center lg:text-left space-y-6 lg:space-y-8 lg:pr-8">
+        <div className={styles.heroContent}>
           
           {/* Mobile Logo */}
-          <div className="flex sm:hidden justify-center mb-8">
+          <div className={styles.mobileLogo}>
             <Image
               src="/logo_legalify_azul_transparente_white.png"
               alt="Legalify logo"
               height={40}
               width={114}
-              className="h-10 w-auto"
+              className={styles.logoImage}
               priority
             />
           </div>
@@ -36,33 +36,33 @@ export const IntroSection: React.FC<Props> = ({ setChecked }) => {
           {/* Hero Title */}
           <h1 
             id="hero-title"
-            className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-snug md:leading-tight animate-slide-up"
+            className={styles.heroTitle}
           >
             {t("titleIntro")}
           </h1>
           
           {/* Hero Description */}
-          <p className="hero-description text-lg md:text-xl leading-relaxed animate-slide-up">
+          <p className={styles.heroDescription}>
             {t("descriptionIntro")}
           </p>
           
           {/* Primary CTA */}
-          <div className="animate-scale-in">
+          <div className={styles.ctaSection}>
             <Link href="/#evolve">
               <a onClick={() => setChecked(false)}>
                 <Button 
                   label={t("buttonIntro")} 
                   paramQuery="/../registro-cliente"
-                  size="lg"
-                  className="w-full sm:w-auto"
+                  size="large"
+                  className={styles.ctaButton}
                 />
               </a>
             </Link>
           </div>
           
           {/* Financial Info Section */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 animate-fade-in">
-            <p className="text-base md:text-lg font-medium text-white mb-4">
+          <div className={styles.financialInfo}>
+            <p className={styles.financialText}>
               {t("financialText")}
             </p>
             <Link href="mailto:info@legalify.app?subject=Solicitud de información de financiamiento">
@@ -70,8 +70,8 @@ export const IntroSection: React.FC<Props> = ({ setChecked }) => {
                 <Button 
                   label={t("financialButton")} 
                   variant="outline"
-                  size="md"
-                  className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-legal-navy"
+                  size="medium"
+                  className={styles.financialButton}
                 />
               </a>
             </Link>
@@ -79,9 +79,9 @@ export const IntroSection: React.FC<Props> = ({ setChecked }) => {
         </div>
         
         {/* Illustration Column */}
-        <div className="lg:col-span-2 flex justify-center lg:justify-end">
-          <div className="w-full max-w-lg animate-bounce-subtle">
-            <Scene01 className="w-full h-auto" />
+        <div className={styles.heroIllustration}>
+          <div className={styles.illustrationContainer}>
+            <Scene01 className={styles.illustrationSvg} />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PaymentCard } from "./PaymentCard";
 import { Modal } from "./Modal";
-import { useLanguageQuery, useTranslation } from "next-export-i18n";
+import { useTranslation } from "next-export-i18n";
 import { Logger } from "../utils/Logger";
 
 export interface Prices {
@@ -25,7 +25,6 @@ interface Props {
 export const PaymentSection: React.FC<Props> = ({ checked, setChecked }) => {
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
-  const [query] = useLanguageQuery();
 
   const _pricesLawyer: Prices[] = [
     {
@@ -119,19 +118,16 @@ export const PaymentSection: React.FC<Props> = ({ checked, setChecked }) => {
         selPrice = price;
         return true;
       }
+      return false;
     });
     return selPrice;
   }
 
   function doPlanUpdatePrice(): void {
-    const renderHTML = (rawHTML: string) =>
-      React.createElement("div", {
-        dangerouslySetInnerHTML: { __html: rawHTML },
-      });
     let selPrice: Prices | null;
     let planId: number;
 
-    let promise: Promise<string> = new Promise((resolve, reject) => {
+    let promise: Promise<string> = new Promise((resolve) => {
       const queryParams = new URLSearchParams(window.location.search);
       const paramPais: string | null = queryParams.get("pais");
 
@@ -145,7 +141,7 @@ export const PaymentSection: React.FC<Props> = ({ checked, setChecked }) => {
             Logger.log(`consulta IP: ${resp.countryCode}`);
             resolve(resp.countryCode);
           })
-          .catch((err) => {
+          .catch(() => {
             resolve("");
           });
       }
@@ -218,7 +214,7 @@ export const PaymentSection: React.FC<Props> = ({ checked, setChecked }) => {
     country2Code: string | null
   ): Promise<any[]> {
     const COUNTRY_AR = "AR";
-    const promise: Promise<any> = new Promise((resolve, reject) => {
+    const promise: Promise<any> = new Promise((resolve) => {
       if (!country2Code) country2Code = COUNTRY_AR;
 
       let url: string = `${process.env.NEXT_PUBLIC_URL_APP_API}/jurisdiccion/country2Code/${country2Code}`;

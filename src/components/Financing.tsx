@@ -1,11 +1,10 @@
 import React from "react";
 import { Button } from "./Button";
 import Link from "next/link";
-import { useLanguageQuery, useTranslation } from "next-export-i18n";
+import { useTranslation } from "next-export-i18n";
 
 const Financing = () => {
   const { t } = useTranslation();
-  const [query] = useLanguageQuery();
 
   function handleContactClick() {
     if (typeof window !== "undefined") {

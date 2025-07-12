@@ -1,0 +1,547 @@
+/* =============================================================================
+   NAVBAR MODERNO - MEJORES PRÁCTICAS 2025
+   ============================================================================= */
+
+/* CSS Custom Properties para theming consistente */
+:root {
+  --navbar-height: 4rem;
+  --navbar-height-desktop: 4.5rem;
+  --navbar-padding: 1rem;
+  --navbar-padding-desktop: 2rem;
+  --navbar-blur: blur(12px);
+  --navbar-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.1);
+  --navbar-shadow-scrolled: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
+  
+  /* Timing de animaciones */
+  --navbar-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --navbar-transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Escala de z-index */
+  --navbar-z-index: 1000;
+}
+
+/* =============================================================================
+   ESTILOS BASE
+   ============================================================================= */
+
+/* Skip link para accesibilidad */
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--legal-blue);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 9999;
+  transition: top 0.3s;
+}
+
+.skipLink:focus {
+  top: 6px;
+}
+
+/* Contenedor principal del navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--navbar-z-index);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: var(--navbar-blur);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  transition: var(--navbar-transition);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--navbar-shadow-scrolled);
+  border-bottom-color: rgba(226, 232, 240, 0.8);
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Contenedor con ancho máximo */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--navbar-padding);
+}
+
+/* Área de contenido principal */
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  position: relative;
+}
+
+/* Espaciador para evitar contenido oculto detrás del navbar fijo */
+.spacer {
+  height: var(--navbar-height);
+}
+
+/* =============================================================================
+   SECCIÓN DEL LOGO
+   ============================================================================= */
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: var(--navbar-transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, 
+    transparent, 
+    rgba(20, 184, 166, 0.1), 
+    transparent
+  );
+  opacity: 0;
+  transition: var(--navbar-transition);
+  border-radius: inherit;
+}
+
+.logo:hover::before {
+  opacity: 1;
+}
+
+.logo:focus {
+  outline: 2px solid var(--legal-gold);
+  outline-offset: 2px;
+}
+
+.logoImage {
+  height: 2.5rem;
+  width: auto;
+  max-width: 160px;
+  transition: var(--navbar-transition-fast);
+}
+
+/* =============================================================================
+   MENÚ DE NAVEGACIÓN
+   ============================================================================= */
+
+.navigation {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 2rem;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  color: var(--legal-navy);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: var(--navbar-transition);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--legal-gold), var(--legal-blue));
+  opacity: 0;
+  transition: var(--navbar-transition);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.navLink:hover {
+  color: white;
+  transform: translateY(-1px);
+}
+
+.navLink:hover::before {
+  opacity: 1;
+}
+
+.navLink:focus {
+  outline: 2px solid var(--legal-gold);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   SECCIÓN DE ACCIONES (Login, CTA, Idioma, Menú móvil)
+   ============================================================================= */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Botón de Login */
+.loginButton {
+  display: none;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--legal-blue);
+  border: 1.5px solid var(--legal-blue);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--navbar-transition);
+  white-space: nowrap;
+  min-height: 2.5rem;
+  box-sizing: border-box;
+}
+
+.loginButton:hover {
+  background: var(--legal-blue);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(44, 90, 160, 0.3);
+}
+
+.loginButton:focus {
+  outline: 2px solid var(--legal-gold);
+  outline-offset: 2px;
+}
+
+/* Contenedor del botón CTA */
+.ctaContainer {
+  display: none;
+}
+
+/* Selector de idioma */
+.languageSelector {
+  display: flex;
+  align-items: center;
+}
+
+/* Botón del menú móvil */
+.mobileMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--navbar-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.mobileMenuButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--legal-gold), var(--legal-blue));
+  opacity: 0;
+  transition: var(--navbar-transition);
+  border-radius: inherit;
+}
+
+.mobileMenuButton:hover {
+  border-color: var(--legal-blue);
+  box-shadow: 0 4px 12px -4px rgba(44, 90, 160, 0.2);
+}
+
+.mobileMenuButton:hover::before {
+  opacity: 0.1;
+}
+
+.mobileMenuButton:focus {
+  outline: 2px solid var(--legal-gold);
+  outline-offset: 2px;
+}
+
+.hamburgerIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--legal-navy);
+  transition: var(--navbar-transition);
+  position: relative;
+  z-index: 1;
+}
+
+.mobileMenuButton:hover .hamburgerIcon {
+  color: var(--legal-blue);
+  transform: scale(1.1);
+}
+
+/* =============================================================================
+   DISEÑO RESPONSIVO - ENFOQUE MOBILE FIRST
+   ============================================================================= */
+
+/* Pantallas pequeñas - Móvil (predeterminado) */
+@media (max-width: 639px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .logoImage {
+    height: 2rem;
+    max-width: 120px;
+  }
+  
+  .actions {
+    gap: 0.5rem;
+  }
+}
+
+/* Pantallas medianas - Tablet */
+@media (min-width: 640px) {
+  .ctaContainer {
+    display: block;
+  }
+  
+  .actions {
+    gap: 0.75rem;
+  }
+}
+
+/* Pantallas grandes - Desktop pequeño */
+@media (min-width: 768px) {
+  .content {
+    height: var(--navbar-height-desktop);
+  }
+  
+  .spacer {
+    height: var(--navbar-height-desktop);
+  }
+  
+  .logoImage {
+    height: 2.75rem;
+    max-width: 180px;
+  }
+  
+  .navigation {
+    display: flex;
+  }
+  
+  /* Mostrar solo elementos de navegación prioritarios */
+  .navItem:nth-child(n+4) {
+    display: none;
+  }
+  
+  .actions {
+    gap: 1rem;
+  }
+}
+
+/* Pantallas extra grandes - Desktop */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--navbar-padding-desktop);
+  }
+  
+  .logoImage {
+    height: 3rem;
+  }
+  
+  .loginButton {
+    display: inline-flex;
+  }
+  
+  /* Mostrar más elementos de navegación */
+  .navItem:nth-child(n+4) {
+    display: block;
+  }
+  
+  .navItem:nth-child(n+6) {
+    display: none;
+  }
+  
+  .navLink {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.9rem;
+  }
+  
+  .navigation {
+    gap: 0.75rem;
+  }
+  
+  .navList {
+    gap: 0.25rem;
+  }
+}
+
+/* Pantallas XXL - Desktop grande */
+@media (min-width: 1280px) {
+  .mobileMenuButton {
+    display: none;
+  }
+  
+  /* Mostrar todos los elementos de navegación */
+  .navItem:nth-child(n+6) {
+    display: block;
+  }
+  
+  .navLink {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .navigation {
+    gap: 1rem;
+    margin: 0 3rem;
+  }
+  
+  .navList {
+    gap: 0.5rem;
+  }
+  
+  .actions {
+    gap: 1.25rem;
+  }
+}
+
+/* Pantallas ultra anchas */
+@media (min-width: 1536px) {
+  .container {
+    padding: 0 3rem;
+  }
+  
+  .navigation {
+    margin: 0 4rem;
+  }
+  
+  .navList {
+    gap: 0.75rem;
+  }
+}
+
+/* =============================================================================
+   ACCESIBILIDAD Y PREFERENCIAS DE MOVIMIENTO
+   ============================================================================= */
+
+/* Respetar las preferencias de movimiento del usuario */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Soporte para modo de alto contraste */
+@media (prefers-contrast: high) {
+  .navbar {
+    background: white;
+    border-bottom: 2px solid black;
+  }
+  
+  .navLink {
+    color: black;
+  }
+  
+  .navLink:hover {
+    background: black;
+    color: white;
+  }
+}
+
+/* =============================================================================
+   ESTILOS DE IMPRESIÓN
+   ============================================================================= */
+
+@media print {
+  .navbar {
+    display: none;
+  }
+  
+  .spacer {
+    display: none;
+  }
+}
+
+/* =============================================================================
+   OPTIMIZACIONES DE RENDIMIENTO
+   ============================================================================= */
+
+/* Aceleración GPU para animaciones suaves */
+.navbar,
+.logo,
+.navLink,
+.loginButton,
+.mobileMenuButton {
+  will-change: transform;
+}
+
+/* Contener cambios de layout */
+.content {
+  contain: layout style;
+}
+
+/* =============================================================================
+   OVERRIDES DE COMPONENTES PARA COMPONENTES EXTERNOS
+   ============================================================================= */
+
+/* Estilo del botón CTA para coincidir con el sistema de diseño */
+.ctaContainer .button {
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  min-height: 2.5rem !important;
+  height: 2.5rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  transition: var(--navbar-transition) !important;
+}
+
+.ctaContainer .button:hover {
+  transform: translateY(-1px) !important;
+}
+
+/* Estilo del componente de idioma */
+.languageSelector > * {
+  transition: var(--navbar-transition);
+}

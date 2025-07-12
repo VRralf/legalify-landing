@@ -2,6 +2,7 @@ import React from "react";
 import { AboutIcon } from "./AboutIcon";
 import Scene06 from "../../public/scenes06.svg";
 import { useTranslation } from "next-export-i18n";
+import styles from "../styles/components/AboutSection.module.css";
 
 interface AboutIconData {
   icon: string;
@@ -53,29 +54,29 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <div className="container-fixed">
-      <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center mb-12">
+    <div className={styles.container}>
+      <div className={styles.grid}>
         
         {/* Illustration Column */}
-        <div className="lg:col-span-2 flex justify-center lg:justify-start order-2 lg:order-1">
-          <div className="w-full max-w-lg animate-fade-in-scale">
-            <Scene06 className="w-full h-auto" />
+        <div className={styles.illustrationColumn}>
+          <div className="w-full max-w-lg">
+            <Scene06 className={styles.illustration} />
           </div>
         </div>
         
         {/* Content Column */}
-        <div className="lg:col-span-3 space-y-6 order-1 lg:order-2">
+        <div className={styles.contentColumn}>
           
           {/* Title and Description */}
-          <div className="text-center lg:text-left space-y-6">
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight about-section-title">
+          <div className={styles.titleContainer}>
+            <h2 className={styles.title}>
               {t("titleAbout")}
             </h2>
-            <div className="space-y-4">
-              <p className="text-lg lg:text-xl text-legal-navy leading-relaxed font-medium">
+            <div className={styles.descriptionContainer}>
+              <p className={styles.description}>
                 {t("descriptionAbout")}
               </p>
-              <p className="text-base lg:text-lg font-semibold text-legal-blue">
+              <p className={styles.descriptionSecondary}>
                 {t("descriptionAbout2")}
               </p>
             </div>
@@ -84,12 +85,12 @@ export const AboutSection: React.FC = () => {
       </div>
       
       {/* Feature Icons Section - Below everything */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+      <div className={styles.featuresGrid}>
         {aboutIconData.map(
           ({ icon, width, height, label, description }, index) => (
             <div 
               key={`feature-${index}`}
-              className="about-feature-card"
+              className={styles.featureCard}
             >
               <AboutIcon
                 icon={icon}

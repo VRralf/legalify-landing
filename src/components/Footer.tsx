@@ -3,8 +3,7 @@ import InstagramIcon from "../../public/instagramIcon.svg";
 import LinkedinIcon from "../../public/linkedinIcon.svg";
 import FacebookIcon from "../../public/facebookIcon.svg";
 import MediumIcon from "../../public/mediumIcon.svg";
-import WhastappIcon from "../../public/whatsapp-logo-40.svg";
-import { useLanguageQuery, useTranslation } from "next-export-i18n";
+import { useTranslation } from "next-export-i18n";
 import ChatBot from "./ChatBot";
 
 interface SocialMedia {
@@ -29,7 +28,6 @@ export const Footer: React.FC = () => {
   ];
 
   const { t } = useTranslation();
-  const [query] = useLanguageQuery();
 
   return (
     <div className="m-3 lg:m-6 mb-12 grid lg:grid-cols-3 gap-4">

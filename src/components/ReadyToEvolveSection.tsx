@@ -2,6 +2,7 @@ import React from "react";
 import EvolveScene from "../../public/evolveScene.svg";
 import YouTubeLogo from "../../public/youTubeLogo.svg";
 import { useTranslation } from "next-export-i18n";
+import styles from "@/styles/components/ReadyToEvolveSection.module.css";
 
 interface Props {
   id: string;
@@ -11,41 +12,41 @@ const ReadyToEvolveSection: React.FC<Props> = ({ id }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="ready-to-evolve-container" id={id}>
-      <div className="ready-to-evolve-grid">
+    <div className={styles.container} id={id}>
+      <div className={styles.grid}>
         {/* Content Section */}
-        <div className="ready-to-evolve-content">
-          <div className="ready-to-evolve-text-wrapper">
+        <div className={styles.content}>
+          <div className={styles.textWrapper}>
             {/* Title */}
-            <div className="ready-to-evolve-title-section">
-              <h2 className="ready-to-evolve-title">
+            <div className={styles.titleSection}>
+              <h2 className={styles.title}>
                 {t("ReadyTitle")}
               </h2>
             </div>
             
             {/* Description */}
-            <div className="ready-to-evolve-description-section">
-              <p className="ready-to-evolve-description-primary">
+            <div className={styles.descriptionSection}>
+              <p className={styles.descriptionPrimary}>
                 {t("ReadyDescription")}
               </p>
-              <p className="ready-to-evolve-description-secondary">
+              <p className={styles.descriptionSecondary}>
                 {t("ReadyDescription2")}
               </p>
             </div>
             
             {/* YouTube CTA */}
-            <div className="ready-to-evolve-cta-section">
+            <div className={styles.ctaSection}>
               <a
                 href="https://www.youtube.com/playlist?list=PLPcJgVIaFR40H38ttI3QDVHGP7HB-moe-"
                 rel="noreferrer"
                 target="_blank"
-                className="ready-to-evolve-youtube-link"
+                className={styles.youtubeLink}
                 aria-label="Ver tutoriales de Legalify en YouTube"
               >
-                <div className="ready-to-evolve-youtube-icon">
+                <div className={styles.youtubeIcon}>
                   <YouTubeLogo />
                 </div>
-                <span className="ready-to-evolve-youtube-text">
+                <span className={styles.youtubeText}>
                   {t("ReadyDescription3")}
                 </span>
               </a>
@@ -54,8 +55,8 @@ const ReadyToEvolveSection: React.FC<Props> = ({ id }) => {
         </div>
         
         {/* Image Section */}
-        <div className="ready-to-evolve-image-section">
-          <div className="ready-to-evolve-image-wrapper">
+        <div className={styles.imageSection}>
+          <div className={styles.imageWrapper}>
             <EvolveScene />
           </div>
         </div>

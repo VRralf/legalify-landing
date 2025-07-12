@@ -1,0 +1,316 @@
+/* =================================
+   Lawyers Plans Section Styles
+   ================================= */
+
+/* Lawyers Plans Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Lawyers Plans Title */
+.titleSection {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--legal-navy);
+  position: relative;
+  display: inline-block;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.05);
+  letter-spacing: -0.02em;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--legal-navy) 0%, var(--legal-blue) 50%, var(--legal-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--legal-gold), var(--legal-blue));
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.3);
+}
+
+/* Lawyers Plans Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Lawyer Plan Card */
+.card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 246, 240, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(20, 184, 166, 0.15);
+  border-radius: 20px;
+  padding: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+  box-shadow: 0 8px 30px rgba(26, 35, 50, 0.06), 0 2px 15px rgba(20, 184, 166, 0.04);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 50px rgba(26, 35, 50, 0.12), 0 8px 30px rgba(20, 184, 166, 0.08);
+  border-color: var(--legal-gold);
+}
+
+/* Premium Plan Styling */
+.cardPremium {
+  border: 2px solid rgba(20, 184, 166, 0.3);
+  box-shadow: 0 15px 45px rgba(26, 35, 50, 0.12), 0 6px 25px rgba(20, 184, 166, 0.1);
+}
+
+/* Plan Badge for Premium */
+.badge {
+  position: absolute;
+  top: 20px;
+  right: -15px;
+  background: linear-gradient(45deg, var(--legal-gold), #0f766e, var(--legal-gold), #0f766e);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease-in-out infinite;
+  color: var(--legal-white);
+  padding: 0.5rem 1.5rem 0.5rem 1rem;
+  border-radius: 12px 0 0 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.4);
+  z-index: 15;
+  transform: rotate(0deg);
+}
+
+.badgeText {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Plan Headers */
+.header {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+}
+
+.headerPremium {
+  background: linear-gradient(135deg, var(--legal-gold) 0%, #0f766e 100%);
+  color: var(--legal-white);
+}
+
+.headerStandard {
+  background: linear-gradient(135deg, var(--legal-blue) 0%, #4a7bc8 100%);
+  color: var(--legal-white);
+}
+
+/* Plan Titles */
+.planTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+}
+
+/* Plan Content */
+.content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(20, 184, 166, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(20, 184, 166, 0.1);
+}
+
+.featureIcon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.125rem;
+}
+
+.featureText {
+  flex: 1;
+  color: var(--legal-navy);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Plan CTA */
+.cta {
+  padding: 2rem;
+  text-align: center;
+}
+
+.button {
+  background: linear-gradient(135deg, var(--legal-blue) 0%, #4a7bc8 100%);
+  color: var(--legal-white);
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(44, 90, 160, 0.25);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--legal-gold) 0%, #0f766e 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button:hover::before {
+  opacity: 1;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(44, 90, 160, 0.4);
+}
+
+.button span {
+  position: relative;
+  z-index: 2;
+}
+
+.buttonPremium {
+  background: linear-gradient(135deg, var(--legal-gold) 0%, #0f766e 100%);
+  box-shadow: 0 6px 20px rgba(20, 184, 166, 0.25);
+}
+
+.buttonPremium::before {
+  background: linear-gradient(135deg, var(--legal-blue) 0%, #4a7bc8 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    min-height: 400px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .header {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .cta {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .planTitle {
+    font-size: 1.25rem;
+  }
+  
+  .badge {
+    top: 15px;
+    right: -10px;
+    padding: 0.4rem 1.25rem 0.4rem 0.75rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Gradient animation keyframe */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

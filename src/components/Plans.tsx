@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "next-export-i18n";
+import styles from "@/styles/components/Plans.module.css";
 
 const Plans = () => {
 
@@ -42,43 +43,43 @@ const Plans = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="plans-section-container">
+    <div className={styles.container}>
       {/* Section Header */}
       <div className="text-center mb-16">
         <h2 
           id="payment"
-          className="plans-section-title text-4xl lg:text-5xl xl:text-6xl font-bold mb-8"
+          className={`${styles.title} text-4xl lg:text-5xl xl:text-6xl font-bold mb-8`}
         >
           {t("plansClientTitle")}
         </h2>
       </div>
 
       {/* Plans Grid */}
-      <div className="plans-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mb-8">
+      <div className={`${styles.grid} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mb-8`}>
         
         {/* Standard Plan */}
-        <div className="plan-card plan-card-standard">
-          <div className="plan-header plan-header-standard">
-            <h3 className="plan-title">
+        <div className={styles.card}>
+          <div className={`${styles.header} ${styles.headerStandard}`}>
+            <h3 className={styles.planTitle}>
               {t("clientStandardTitle")}
             </h3>
           </div>
           
-          <div className="plan-price-section">
-            <div className="plan-price">
+          <div className={styles.priceSection}>
+            <div className={styles.price}>
               {t("clientFreeTitle")}
             </div>
           </div>
 
-          <div className="plan-category">
-            <h4 className="plan-category-title">
+          <div className={styles.category}>
+            <h4 className={styles.categoryTitle}>
               {t("layersTitle")}
             </h4>
           </div>
 
-          <ul className="plan-features">
-            <li className="plan-feature plan-feature-included">
-              <div className="plan-feature-icon plan-feature-icon-check">
+          <ul className={styles.features}>
+            <li className={`${styles.feature} ${styles.featureIncluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCheck}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -92,11 +93,11 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientMeetDescription")}</span>
+              <span className={styles.featureText}>{t("clientMeetDescription")}</span>
             </li>
 
-            <li className="plan-feature plan-feature-excluded">
-              <div className="plan-feature-icon plan-feature-icon-cross">
+            <li className={`${styles.feature} ${styles.featureExcluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCross}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -110,11 +111,11 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientMeetDescription2")}</span>
+              <span className={styles.featureText}>{t("clientMeetDescription2")}</span>
             </li>
             
-            <li className="plan-feature plan-feature-excluded">
-              <div className="plan-feature-icon plan-feature-icon-cross">
+            <li className={`${styles.feature} ${styles.featureExcluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCross}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -128,11 +129,11 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientEmergDescription5")}</span>
+              <span className={styles.featureText}>{t("clientEmergDescription5")}</span>
             </li>
             
-            <li className="plan-feature plan-feature-excluded">
-              <div className="plan-feature-icon plan-feature-icon-cross">
+            <li className={`${styles.feature} ${styles.featureExcluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCross}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -146,17 +147,17 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientEmergDescription4")}</span>
+              <span className={styles.featureText}>{t("clientEmergDescription4")}</span>
             </li>
           </ul>
 
-          <div className="plan-disclaimer">
+          <div className={styles.disclaimer}>
             ***{t("plansDisclaimer2")}
           </div>
 
-          <div className="plan-cta">
+          <div className={styles.cta}>
             <a href={process.env.NEXT_PUBLIC_URL_APP + "/registro-cliente"}>
-              <button className="plan-button plan-button-standard">
+              <button className={styles.button}>
                 <span>{t("buttonContract")}</span>
               </button>
             </a>
@@ -164,26 +165,26 @@ const Plans = () => {
         </div>
 
         {/* Meeting Plan - Recommended */}
-        <div className="plan-card plan-card-recommended">
-          <div className="plan-badge">
-            <span className="plan-badge-text">{t("clientRecommended")}</span>
+        <div className={`${styles.card} ${styles.cardRecommended}`}>
+          <div className={styles.badge}>
+            <span className={styles.badgeText}>{t("clientRecommended")}</span>
           </div>
           
-          <div className="plan-header plan-header-recommended">
-            <h3 className="plan-title">
+          <div className={`${styles.header} ${styles.headerRecommended}`}>
+            <h3 className={styles.planTitle}>
               {t("clientMeetTitle")}
             </h3>
           </div>
           
-          <div className="plan-price-section">
-            <div className="plan-price-dynamic">
+          <div className={styles.priceSection}>
+            <div className={styles.priceDynamic}>
               {t("planMeeting")}
             </div>
           </div>
 
-          <ul className="plan-features">
-            <li className="plan-feature plan-feature-included">
-              <div className="plan-feature-icon plan-feature-icon-check">
+          <ul className={styles.features}>
+            <li className={`${styles.feature} ${styles.featureIncluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCheck}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -197,11 +198,11 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientMeetDescription")}</span>
+              <span className={styles.featureText}>{t("clientMeetDescription")}</span>
             </li>
 
-            <li className="plan-feature plan-feature-included">
-              <div className="plan-feature-icon plan-feature-icon-check">
+            <li className={`${styles.feature} ${styles.featureIncluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCheck}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -215,11 +216,11 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientMeetDescription2")}</span>
+              <span className={styles.featureText}>{t("clientMeetDescription2")}</span>
             </li>
             
-            <li className="plan-feature plan-feature-included">
-              <div className="plan-feature-icon plan-feature-icon-check">
+            <li className={`${styles.feature} ${styles.featureIncluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCheck}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -233,11 +234,11 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientEmergDescription5")}</span>
+              <span className={styles.featureText}>{t("clientEmergDescription5")}</span>
             </li>
             
-            <li className="plan-feature plan-feature-excluded">
-              <div className="plan-feature-icon plan-feature-icon-cross">
+            <li className={`${styles.feature} ${styles.featureExcluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCross}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -251,13 +252,13 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientEmergDescription4")}</span>
+              <span className={styles.featureText}>{t("clientEmergDescription4")}</span>
             </li>
           </ul>
 
-          <div className="plan-cta">
+          <div className={styles.cta}>
             <a href={process.env.NEXT_PUBLIC_URL_APP + "/registro-cliente"}>
-              <button className="plan-button plan-button-recommended">
+              <button className={`${styles.button} ${styles.buttonRecommended}`}>
                 <span>{t("buttonContract")}</span>
               </button>
             </a>
@@ -265,22 +266,22 @@ const Plans = () => {
         </div>
 
         {/* Emergency Plan */}
-        <div className="plan-card plan-card-emergency">
-          <div className="plan-header plan-header-emergency">
-            <h3 className="plan-title">
+        <div className={styles.card}>
+          <div className={`${styles.header} ${styles.headerEmergency}`}>
+            <h3 className={styles.planTitle}>
               {t("clientEmergTitle")}
             </h3>
           </div>
           
-          <div className="plan-price-section">
-            <div className="plan-price-dynamic">
+          <div className={styles.priceSection}>
+            <div className={styles.priceDynamic}>
               {t("paymentEmer")}
             </div>
           </div>
 
-          <ul className="plan-features">
-            <li className="plan-feature plan-feature-included">
-              <div className="plan-feature-icon plan-feature-icon-check">
+          <ul className={styles.features}>
+            <li className={`${styles.feature} ${styles.featureIncluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCheck}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -294,11 +295,11 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientMeetDescription")}</span>
+              <span className={styles.featureText}>{t("clientMeetDescription")}</span>
             </li>
 
-            <li className="plan-feature plan-feature-included">
-              <div className="plan-feature-icon plan-feature-icon-check">
+            <li className={`${styles.feature} ${styles.featureIncluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCheck}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -312,11 +313,11 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientMeetDescription2")}</span>
+              <span className={styles.featureText}>{t("clientMeetDescription2")}</span>
             </li>
             
-            <li className="plan-feature plan-feature-included">
-              <div className="plan-feature-icon plan-feature-icon-check">
+            <li className={`${styles.feature} ${styles.featureIncluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCheck}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -330,11 +331,11 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientEmergDescription5")}</span>
+              <span className={styles.featureText}>{t("clientEmergDescription5")}</span>
             </li>
             
-            <li className="plan-feature plan-feature-included">
-              <div className="plan-feature-icon plan-feature-icon-check">
+            <li className={`${styles.feature} ${styles.featureIncluded}`}>
+              <div className={`${styles.featureIcon} ${styles.featureIconCheck}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -348,13 +349,13 @@ const Plans = () => {
                   />
                 </svg>
               </div>
-              <span className="plan-feature-text">{t("clientEmergDescription4")}</span>
+              <span className={styles.featureText}>{t("clientEmergDescription4")}</span>
             </li>
           </ul>
 
-          <div className="plan-cta">
+          <div className={styles.cta}>
             <a href={process.env.NEXT_PUBLIC_URL_APP + "/registro-cliente"}>
-              <button className="plan-button plan-button-emergency">
+              <button className={`${styles.button} ${styles.buttonEmergency}`}>
                 <span>{t("buttonContract")}</span>
               </button>
             </a>
@@ -363,11 +364,11 @@ const Plans = () => {
       </div>
 
       {/* Plans Footer */}
-      <div className="plans-footer text-center mt-8">
-        <p className="plans-disclaimer-main">
+      <div className={`${styles.footer} text-center mt-8`}>
+        <p className={styles.disclaimerMain}>
           {t("plansIva")}
         </p>
-        <p className="plans-disclaimer-secondary">
+        <p className={styles.disclaimerSecondary}>
           {t("plansDisclaimer")}
         </p>
       </div>

@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
+import styles from "../styles/components/Button.module.css";
 
 interface Props {
   label: string;
   paramQuery?: string;
   variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'small' | 'medium' | 'large';
   className?: string;
   onClick?: () => void;
+  disabled?: boolean;
+  loading?: boolean;
 }
 
 export const Button: React.FC<Props> = ({ 
   label, 
   paramQuery, 
   variant = 'primary',
-  size = 'md',
+  size = 'medium',
   className = '',
-  onClick
+  onClick,
+  disabled = false,
+  loading = false
 }) => {
   const [appendUrlQuery, setAppendUrlQuery] = useState("");
 
@@ -24,21 +29,17 @@ export const Button: React.FC<Props> = ({
     setAppendUrlQuery(paramQuery);
   }, [paramQuery]);
 
-  const baseClasses = "legal-button inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2 min-h-[3rem] uppercase tracking-wide";
-  
-  const variants = {
-    primary: "bg-gradient-legal-primary text-legal-white hover:bg-gradient-legal-accent shadow-lg hover:shadow-xl focus:ring-legal-blue/30 hover:scale-105",
-    secondary: "bg-legal-cream text-legal-navy hover:bg-legal-gold hover:text-legal-white shadow-md hover:shadow-lg focus:ring-legal-gold/30 hover:scale-105 border-2 border-legal-gold",
-    outline: "border-2 border-legal-blue text-legal-blue hover:bg-legal-blue hover:text-legal-white shadow-md hover:shadow-lg focus:ring-legal-blue/30 hover:scale-105 bg-transparent"
-  };
-
-  const sizes = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg"
-  };
+  const buttonClasses = [
+    styles.button,
+    styles[variant],
+    styles[size],
+    loading ? styles.loading : '',
+    className
+  ].filter(Boolean).join(' ');
 
   const handleClick = () => {
+    if (disabled || loading) return;
+    
     if (onClick) {
       onClick();
     } else {
@@ -48,11 +49,12 @@ export const Button: React.FC<Props> = ({
 
   return (
     <button
-      className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
+      className={buttonClasses}
       onClick={handleClick}
       type="button"
+      disabled={disabled || loading}
     >
-      {label}
+      {loading ? '' : label}
     </button>
   );
 };

@@ -1,12 +1,12 @@
 /* eslint-disable */
 import React, { useState } from "react";
 import { Navbar } from "../components/Navbar";
+import { MobileMenu } from "../components/MobileMenu";
 import { IntroSection } from "../components/IntroSection";
 import { ServiceSection } from "../components/ServiceSection";
 import { AboutSection } from "../components/AboutSection";
 import { Footer } from "../components/Footer";
 import { SEO } from "../components/SEO";
-import Link from "next/link";
 import { useTranslation } from "next-export-i18n";
 import Policies from "../components/Policies";
 
@@ -25,15 +25,15 @@ export async function getStaticProps() {
 
 export default function Home() {
   const [checked, setChecked] = useState(false);
-  const [navWidth, setNavWidth] = useState("0%");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   function openNav() {
-    setNavWidth("100%");
+    setIsMobileMenuOpen(true);
     document.body.style.overflow = "hidden";
   }
 
   function closeNav() {
-    setNavWidth("0%");
+    setIsMobileMenuOpen(false);
     document.body.style.overflow = "unset";
   }
 
@@ -52,86 +52,11 @@ export default function Home() {
       />
       
       <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-        {/* Modern overlay menu */}
-        <div 
-          id="myNav" 
-          className="overlay" 
-          style={{ width: navWidth }}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="mobile-menu-title"
-        >
-          <button
-            className="closebtn font-thin"
-            onClick={() => closeNav()}
-            aria-label="Cerrar menú de navegación"
-          >
-            &times;
-          </button>
-          <div className="overlay-content flex flex-col items-center text-[15px] mt-[80px] font-medium">
-            <img
-              src="/logo_legalify_azul_transparente_white.png"
-              alt="Legalify logo"
-              height={43}
-              width={121}
-              className="mb-8"
-            />
-
-            <Link href="/#service">
-              <a className="menuItem" onClick={() => closeNav()}>
-                {t("NavBarServices")}
-              </a>
-            </Link>
-
-            <div className="w-24 h-px bg-white/30 my-4" />
-            
-            <Link href="/#payment">
-              <a className="menuItem" onClick={() => closeNav()}>
-                {t("NavBarPrices")}
-              </a>
-            </Link>
-
-            <div className="w-24 h-px bg-white/30 my-4" />
-            
-            <Link href="/#evolve">
-              <a className="menuItem" onClick={() => closeNav()}>
-                {t("NavBarLawyers")}
-              </a>
-            </Link>
-
-            <div className="w-24 h-px bg-white/30 my-4" />
-            
-            <Link href="/#enterprise-services">
-              <a className="menuItem" onClick={() => closeNav()}>
-                {t("NavBarEnterprises")}
-              </a>
-            </Link>
-
-            <div className="w-24 h-px bg-white/30 my-4" />
-            
-            <Link href="/#aliados">
-              <a className="menuItem" onClick={() => closeNav()}>
-                {t("NavBarAliance")}
-              </a>
-            </Link>
-
-            <div className="w-24 h-px bg-white/30 my-4" />
-            
-            <Link href="/#testimonials">
-              <a className="menuItem" onClick={() => closeNav()}>
-                {t("NavBarTestimonials")}
-              </a>
-            </Link>
-
-            <div className="w-24 h-px bg-white/30 my-4" />
-            
-            <Link href={process.env.NEXT_PUBLIC_URL_APP + "/login"}>
-              <a className="menuItem" onClick={() => closeNav()}>
-                {t("NavBarLogin")}
-              </a>
-            </Link>
-          </div>
-        </div>
+        {/* Mobile Menu */}
+        <MobileMenu 
+          isOpen={isMobileMenuOpen} 
+          onClose={closeNav} 
+        />
 
         {/* Main content wrapper */}
         <div className="relative">
@@ -140,11 +65,7 @@ export default function Home() {
           {/* Main content with semantic structure */}
           <main id="main-content">
             {/* Hero Section */}
-            <section className="section-hero section-padding-lg">
-              <div className="container-fixed">
-                <IntroSection checked={checked} setChecked={setChecked} />
-              </div>
-            </section>
+            <IntroSection checked={checked} setChecked={setChecked} />
 
             {/* About Section */}
             <section className="section-neutral section-padding">

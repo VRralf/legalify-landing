@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useTranslation } from 'next-export-i18n';
 
 interface SEOProps {
   title?: string;
@@ -16,8 +15,6 @@ export const SEO: React.FC<SEOProps> = ({
   url = 'https://legalify.app',
   type = 'website'
 }) => {
-  const { t } = useTranslation();
-
   const fullTitle = title.includes('Legalify') ? title : `${title} | Legalify`;
   
   return (

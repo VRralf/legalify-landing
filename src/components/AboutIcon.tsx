@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/components/AboutIcon.module.css";
 
 interface Props {
   icon: string;
@@ -16,9 +17,9 @@ export const AboutIcon: React.FC<Props> = ({
   description,
 }) => {
   return (
-    <div className="flex flex-col items-center space-y-3 text-center">
+    <div className={styles.container}>
       {/* Icon Container */}
-      <div className="about-icon-container">
+      <div className={styles.iconContainer}>
         <img 
           src={icon} 
           alt={label}
@@ -26,16 +27,16 @@ export const AboutIcon: React.FC<Props> = ({
             width: `${Math.min(width * 0.8, 32)}px`, 
             height: `${Math.min(height * 0.8, 32)}px` 
           }}
-          className="object-contain relative z-10" 
+          className={styles.icon}
         />
       </div>
       
       {/* Text Content */}
-      <div className="space-y-1">
-        <p className="text-sm font-semibold text-legal-navy leading-tight">
+      <div className={styles.textContent}>
+        <p className={styles.label}>
           {label}
         </p>
-        <p className="text-xs text-legal-silver leading-snug">
+        <p className={styles.description}>
           {description}
         </p>
       </div>

@@ -13,6 +13,7 @@ function Colegioform() {
       }, 5000);
       return () => clearTimeout(timer);
     }
+    return; // Explicit return for when emailSent is false
   }, [emailSent]);
 
   const handleSubmit = (event: any) => {

@@ -1,0 +1,41 @@
+/* =============================================================================
+   NAVBAR VARIABLES GLOBALES
+   ============================================================================= */
+
+/* CSS Custom Properties para theming consistente */
+:root {
+  --navbar-height: 4rem;
+  --navbar-height-desktop: 4.5rem;
+  --navbar-padding: 1rem;
+  --navbar-padding-desktop: 2rem;
+  --navbar-blur: blur(12px);
+  --navbar-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.1);
+  --navbar-shadow-scrolled: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
+  
+  /* Timing de animaciones */
+  --navbar-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --navbar-transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Escala de z-index */
+  --navbar-z-index: 1000;
+  --navbar-mobile-menu-z-index: 1001;
+  
+  /* Breakpoints para media queries */
+  --navbar-mobile-max: 768px;
+  --navbar-tablet-min: 769px;
+  --navbar-tablet-max: 1024px;
+  --navbar-desktop-min: 1025px;
+}
+
+/* =============================================================================
+   ACCESIBILIDAD Y PREFERENCIAS DE MOVIMIENTO GLOBALES
+   ============================================================================= */
+
+/* Respetar las preferencias de movimiento del usuario */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

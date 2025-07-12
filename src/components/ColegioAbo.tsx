@@ -1,18 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Colegioform from "../components/Colegioform";
 import { useModal } from "./ModalContext";
 
 function ColegioAbo() {
-  const [, setIsOpen] = useState(false);
   const { isModalOpen, openModal, closeModal } = useModal();
-
-  const handleImageClick = () => {
-    setIsOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
 
   return (
     <div className="containerCol">

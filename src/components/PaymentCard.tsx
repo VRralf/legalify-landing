@@ -1,6 +1,6 @@
 import React from "react";
 import { Prices } from "./PaymentSection";
-import { useLanguageQuery, useTranslation } from "next-export-i18n";
+import { useTranslation } from "next-export-i18n";
 
 interface Props {
   price: Prices;
@@ -9,7 +9,6 @@ interface Props {
 
 export const PaymentCard: React.FC<Props> = ({ price, type }) => {
   const { t } = useTranslation();
-  const [query] = useLanguageQuery();
 
   const {
     title,
