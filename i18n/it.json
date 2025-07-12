@@ -117,7 +117,7 @@
   "servicesEmpre2": "Richiedi un preventivo per servizi legali su misura per la tua azienda o scopri i pacchetti che abbiamo progettato per le startup.",
   "componentVisibility": {
     "showAfiliadosSuperVielleSection": false,
-    "showAfiliadosTributoSimple": false
+    "showAfiliadosTributoSimple": true
 },
   "privacyPolicy": "/Politica-de-Privacidad-es.pdf",
 "cookiePolicy": "/Politica-de-Cookies-es.pdf"

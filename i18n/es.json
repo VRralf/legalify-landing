@@ -121,7 +121,7 @@
   "servicesEmpre2": "Pide cotización por servicios legales a medida de tu empresa o conoce los packs que diseñamos para startups.",
   "componentVisibility": {
     "showAfiliadosSuperVielleSection": false,
-    "showAfiliadosTributoSimple": false
+    "showAfiliadosTributoSimple": true
   },
   "privacyPolicy": "/Politica-de-Privacidad-es.pdf",
   "cookiePolicy": "/Politica-de-Cookies-es.pdf"

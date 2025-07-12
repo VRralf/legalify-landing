@@ -118,7 +118,7 @@
   "servicesEmpre2": "Request a quote for tailor-made legal services for your company or discover the packages we designed for startups.",
   "componentVisibility": {
     "showAfiliadosSuperVielleSection": false,
-    "showAfiliadosTributoSimple": false
+    "showAfiliadosTributoSimple": true
 },
 "privacyPolicy": "/Politica-de-Privacidad-en.pdf",
 "cookiePolicy": "/Politica-de-Cookies-en.pdf"

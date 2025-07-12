@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-export-i18n";
+import styles from '../styles/components/Testimonios.module.css';
 
 const TestimonialsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -64,31 +65,67 @@ const TestimonialsSlider = () => {
     return () => clearInterval(interval);
   }, [currentIndex]);
 
+  const QuoteIcon = () => (
+    <svg
+      className={styles.quoteIcon}
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
+    </svg>
+  );
+
+  const goToTestimonial = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   return (
-    <div>
-      <h1
-        id="testimonials"
-        className="text-[30px] md:text-2xl lg:text-3xl text-legalify-primary font-semibold text-center mt-5 mb-5"
-      >
-        {t("testimonialsTitle")}
-      </h1>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-8 p-8">
-        {currentTestimonies.map((testimony) => (
-          <div
-            className="flex flex-col-3 gap-6 bg-gray-100 p-8 rounded-xl"
+    <section className={styles.container} role="region" aria-labelledby="testimonials-title">
+      <header className={styles.titleSection}>
+        <h1 
+          id="testimonials"
+          className={styles.title}
+        >
+          {t("testimonialsTitle")}
+        </h1>
+      </header>
+      
+      <div className={styles.testimonialsGrid}>
+        {currentTestimonies.map((testimony, index) => (
+          <article
             key={testimony.name}
-            style={{ boxShadow: "5px 5px 5px 5px rgba(0, 0, 0, 0.2)" }}
+            className={styles.testimonialCard}
+            onClick={() => goToTestimonial(currentIndex + index)}
+            role="button"
+            tabIndex={0}
+            aria-label={`Testimonial from ${testimony.name}`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                goToTestimonial(currentIndex + index);
+              }
+            }}
           >
-            <div>
-              <p className="text-gray-500">{testimony.message}</p>
-              <h3 className="text-indigo-500 font-bold mt-3">
-                {testimony.name}
-              </h3>
-            </div>
-          </div>
+            <QuoteIcon />
+            
+            <blockquote className={styles.message}>
+              "{testimony.message}"
+            </blockquote>
+            
+            <footer className={styles.authorSection}>
+              <div className={styles.avatar} aria-hidden="true">
+                {testimony.name.charAt(0).toUpperCase()}
+              </div>
+              <div className={styles.authorInfo}>
+                <cite className={styles.authorName}>{testimony.name}</cite>
+                <p className={styles.authorTitle}>Cliente Legalify</p>
+              </div>
+            </footer>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
