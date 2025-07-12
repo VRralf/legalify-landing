@@ -206,7 +206,7 @@
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
 }
 
-/* Accordion Content - TRANSPARENTE MEJORADO */
+/* Accordion Content - ALTURA AJUSTADA */
 .accordionContent {
   max-height: 0;
   overflow: hidden;
@@ -216,12 +216,12 @@
 }
 
 .accordionContent.isOpen {
-  max-height: 2000px;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 5000px; /* Incrementado para mostrar todo el contenido */
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contentWrapper {
-  padding: 2rem;
+  padding: 2.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   position: relative;
 }
@@ -249,6 +249,19 @@
     width: 2.75rem;
     height: 2.75rem;
     font-size: 1.125rem;
+  }
+  
+  .contentWrapper {
+    padding: 2rem;
+  }
+  
+  .contentWrapper :global(.section) {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contentWrapper :global(.banner img) {
+    max-width: 80%;
   }
 }
 
@@ -281,40 +294,12 @@
     font-size: 1rem;
   }
   
-  .chevron {
-    align-self: center;
-    font-size: 1.25rem;
+  .buttonTitle {
+    font-size: 1.125rem;
   }
   
-  .contentWrapper {
-    padding: 1.5rem;
-  }
-}
-
-/* Mobile Small */
-@media (max-width: 640px) {
-  .container {
-    padding: 2rem 0.75rem;
-    border-radius: 1rem;
-  }
-  
-  .accordionButton {
-    padding: 1rem;
-  }
-  
-  .buttonContent {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-  
-  .buttonIcon {
-    align-self: center;
-  }
-  
-  .buttonText {
-    text-align: center;
-    width: 100%;
+  .buttonSubtitle {
+    font-size: 0.875rem;
   }
   
   .chevron {
@@ -323,7 +308,74 @@
   }
   
   .contentWrapper {
+    padding: 1.5rem;
+  }
+  
+  .contentWrapper :global(.section) {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .contentWrapper :global(.section h2) {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .contentWrapper :global(.section p) {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .contentWrapper :global(.banner img) {
+    max-width: 95%;
+  }
+  
+  .contentWrapper :global(div[style*="display: flex"] img) {
+    max-width: 95% !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .contentWrapper :global(form) {
+    padding: 1.5rem;
+  }
+  
+  .contentWrapper :global(input),
+  .contentWrapper :global(textarea),
+  .contentWrapper :global(select) {
+    padding: 0.625rem 0.875rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .contentWrapper :global(button) {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .container {
+    padding: 2rem 0.75rem;
+  }
+  
+  .accordionButton {
+    padding: 1rem;
+  }
+  
+  .contentWrapper {
     padding: 1.25rem;
+  }
+  
+  .contentWrapper :global(.section) {
+    padding: 0.875rem;
+  }
+  
+  .contentWrapper :global(.section h2) {
+    font-size: 1.125rem !important;
+  }
+  
+  .contentWrapper :global(.section p) {
+    font-size: 0.8rem !important;
   }
 }
 
@@ -407,4 +459,149 @@
   .contentWrapper {
     border-color: rgba(255, 255, 255, 0.25);
   }
+}
+
+/* =============================================================================
+   ESTILOS PARA CONTENIDO INTERNO DE ACORDEONES
+   ============================================================================= */
+
+/* Estilos para Asesor360 */
+.contentWrapper :global(.container) {
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.contentWrapper :global(.banner) {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentWrapper :global(.banner img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.contentWrapper :global(.section) {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.contentWrapper :global(.section:last-child) {
+  margin-bottom: 0;
+}
+
+.contentWrapper :global(.section h2) {
+  color: #ffffff !important;
+  font-size: clamp(1.25rem, 3vw, 1.75rem) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+}
+
+.contentWrapper :global(.section p) {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: clamp(0.875rem, 2vw, 1rem) !important;
+  line-height: 1.6 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  text-align: left !important;
+  font-weight: 500 !important;
+}
+
+.contentWrapper :global(.section img) {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
+}
+
+/* Estilos para PackStartups */
+.contentWrapper :global(div[style*="display: flex"]) {
+  padding: 1rem 0;
+}
+
+.contentWrapper :global(div[style*="display: flex"] img) {
+  max-width: 90% !important;
+  height: auto !important;
+  margin-bottom: 1.5rem !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.contentWrapper :global(div[style*="display: flex"] img:hover) {
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2) !important;
+}
+
+.contentWrapper :global(hr) {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  margin: 2rem 0;
+}
+
+/* Mejoras generales para formularios */
+.contentWrapper :global(form) {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  margin-top: 1.5rem;
+}
+
+.contentWrapper :global(input),
+.contentWrapper :global(textarea),
+.contentWrapper :global(select) {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border-radius: 0.5rem !important;
+  padding: 0.75rem 1rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.contentWrapper :global(input::placeholder),
+.contentWrapper :global(textarea::placeholder) {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.contentWrapper :global(input:focus),
+.contentWrapper :global(textarea:focus),
+.contentWrapper :global(select:focus) {
+  outline: none !important;
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.contentWrapper :global(label) {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+.contentWrapper :global(button) {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 0.875rem 2rem !important;
+  border-radius: 0.75rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+}
+
+.contentWrapper :global(button:hover) {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4) !important;
 }
