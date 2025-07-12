@@ -115,6 +115,9 @@
   "servicesEmpre1": "Legalify si adatta alle esigenze delle organizzazioni in modo che possano offrire un programma di assistenza completo (legale, finanziario e contabile) ai loro dipendenti.",
   "labelInfo": "Maggiori informazioni",
   "servicesEmpre2": "Richiedi un preventivo per servizi legali su misura per la tua azienda o scopri i pacchetti che abbiamo progettato per le startup.",
+  "chatBotMobileText": "Hai bisogno di aiuto?",
+  "chatBotDesktopText": "Benvenuto su Legalify! Se hai bisogno di informazioni sul funzionamento della nostra piattaforma o aiuto con la registrazione, puoi contattare i nostri consulenti tramite WhatsApp cliccando qui",
+  "chatBotButtonText": "Vai a WhatsApp",
   "componentVisibility": {
     "showAfiliadosSuperVielleSection": false,
     "showAfiliadosTributoSimple": true

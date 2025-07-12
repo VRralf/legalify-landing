@@ -116,6 +116,9 @@
   "servicesEmpre1": "Legalify adapts to the needs of organizations so that they can offer a comprehensive assistance program (legal, financial, and accounting) to their employees.",
   "labelInfo": "More info",
   "servicesEmpre2": "Request a quote for tailor-made legal services for your company or discover the packages we designed for startups.",
+  "chatBotMobileText": "Need help?",
+  "chatBotDesktopText": "Welcome to Legalify! If you need information about how our platform works or help with registration, you can contact our advisors via WhatsApp by clicking here",
+  "chatBotButtonText": "Go to WhatsApp",
   "componentVisibility": {
     "showAfiliadosSuperVielleSection": false,
     "showAfiliadosTributoSimple": true
