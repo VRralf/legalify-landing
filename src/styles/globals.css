@@ -612,19 +612,6 @@ input:checked~.block {
   will-change: opacity;
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  .section-neutral {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);
-    color: #f1f5f9;
-  }
-  
-  .section-secondary {
-    background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%);
-    color: #f9fafb;
-  }
-}
-
 /* Print Styles */
 @media print {
   .floating-whatsapp,
