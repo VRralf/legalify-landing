@@ -256,12 +256,34 @@
   }
   
   .contentWrapper :global(.section) {
-    padding: 1.25rem;
-    margin-bottom: 1.5rem;
+    padding: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+    flex-direction: row !important;
+    gap: 1rem !important;
+    align-items: center !important;
+  }
+  
+  .contentWrapper :global(.section img) {
+    width: 45% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    order: 2 !important;
+    margin: 0 !important;
+  }
+  
+  .contentWrapper :global(.section .content) {
+    width: 55% !important;
+    order: 1 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .contentWrapper :global(.section h2) {
+    text-align: left !important;
   }
   
   .contentWrapper :global(.banner img) {
-    max-width: 80%;
+    max-width: 80% !important;
   }
 }
 
@@ -312,22 +334,51 @@
   }
   
   .contentWrapper :global(.section) {
-    padding: 1rem;
-    margin-bottom: 1.25rem;
+    padding: 1rem !important;
+    margin-bottom: 1.25rem !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+  }
+  
+  .contentWrapper :global(.section img) {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 160px !important;
+    object-fit: cover !important;
+    order: 1 !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    align-self: stretch !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  .contentWrapper :global(.section .content) {
+    width: 100% !important;
+    order: 2 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
   }
   
   .contentWrapper :global(.section h2) {
     font-size: 1.25rem !important;
     margin-bottom: 0.75rem !important;
+    text-align: center !important;
   }
   
   .contentWrapper :global(.section p) {
     font-size: 0.875rem !important;
     line-height: 1.5 !important;
+    text-align: left !important;
   }
   
   .contentWrapper :global(.banner img) {
-    max-width: 95%;
+    max-width: 95% !important;
   }
   
   .contentWrapper :global(div[style*="display: flex"] img) {
@@ -367,15 +418,43 @@
   }
   
   .contentWrapper :global(.section) {
-    padding: 0.875rem;
+    padding: 0.875rem !important;
+    flex-direction: column !important;
+    gap: 0.875rem !important;
+    align-items: stretch !important;
+  }
+  
+  .contentWrapper :global(.section img) {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 140px !important;
+    object-fit: cover !important;
+    order: 1 !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    align-self: stretch !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  .contentWrapper :global(.section .content) {
+    width: 100% !important;
+    order: 2 !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
   
   .contentWrapper :global(.section h2) {
     font-size: 1.125rem !important;
+    text-align: center !important;
   }
   
   .contentWrapper :global(.section p) {
     font-size: 0.8rem !important;
+    text-align: left !important;
   }
 }
 
@@ -493,10 +572,42 @@
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .contentWrapper :global(.section:last-child) {
   margin-bottom: 0;
+}
+
+/* Imágenes del contenido Asesor360 - TAMAÑO UNIFORME */
+.contentWrapper :global(.section img) {
+  width: 50% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  margin-bottom: 0 !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  order: 2 !important;
+}
+
+.contentWrapper :global(.section img:hover) {
+  transform: scale(1.02) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Contenido de texto del Asesor360 */
+.contentWrapper :global(.section .content) {
+  flex: 1 !important;
+  padding: 0 !important;
+  width: auto !important;
+  order: 1 !important;
 }
 
 .contentWrapper :global(.section h2) {
@@ -505,7 +616,7 @@
   font-weight: 700 !important;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
   margin-bottom: 1rem !important;
-  text-align: center !important;
+  text-align: left !important;
 }
 
 .contentWrapper :global(.section p) {
@@ -515,12 +626,7 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
   text-align: left !important;
   font-weight: 500 !important;
-}
-
-.contentWrapper :global(.section img) {
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  margin-bottom: 1rem;
+  margin: 0 !important;
 }
 
 /* Estilos para PackStartups */
@@ -604,4 +710,41 @@
 .contentWrapper :global(button:hover) {
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* =============================================================================
+   ESTILOS ESPECÍFICOS PARA FORZAR ANCHO COMPLETO EN MOBILE
+   ============================================================================= */
+
+/* Forzar ancho completo en mobile para todas las imágenes dentro de secciones */
+@media (max-width: 768px) {
+  .contentWrapper [class*="section"] img,
+  .contentWrapper .section img,
+  .contentWrapper div img {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    display: block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentWrapper [class*="section"] img,
+  .contentWrapper .section img,
+  .contentWrapper div img {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    display: block !important;
+  }
 }
