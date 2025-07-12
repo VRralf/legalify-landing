@@ -27,7 +27,7 @@ jobs:
           node-version: '18'
       
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
         with:
           static_site_generator: next
       
@@ -41,7 +41,7 @@ jobs:
           NEXT_PUBLIC_URL_APP: https://login.legalify.app
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
@@ -54,4 +54,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
