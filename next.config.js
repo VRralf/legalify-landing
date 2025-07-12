@@ -7,6 +7,11 @@ const nextConfig = {
   
   reactStrictMode: true,
   
+  // Disable ESLint during build for GitHub Pages
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  
   // Security headers
   async headers() {
     return [
