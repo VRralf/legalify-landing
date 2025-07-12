@@ -65,7 +65,7 @@ const Language: React.FC = () => {
 
       <div className={`${styles.dropdown} ${isOpen ? styles.open : ''}`}>
         {languages.map((language) => (
-          <LanguageSwitcher key={language.code} lang={language.code} href="/">
+          <LanguageSwitcher key={language.code} lang={language.code}>
             <a
               onClick={handleLanguageChange}
               className={`${styles.option} ${
